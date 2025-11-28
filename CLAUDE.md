@@ -43,9 +43,36 @@ npx prisma db push
 - Uses Prisma ORM for database access
 
 ### Database (PostgreSQL + Prisma)
-- `prisma/schema.prisma` - Schema definition
+- `prisma/schema.prisma` - Schema definition (source of truth for tables)
 - `src/generated/prisma/` - Auto-generated Prisma client
-- `db/` - SQL migration files (manual)
+- `db/init-db-data.sql` - **Game data definitions** (enemies, items, spells)
+- `db/init_db.sql` - Full schema creation SQL
+
+### Key Database Tables
+
+| Table | Purpose | Defined In |
+|-------|---------|------------|
+| `players` | User accounts | schema.prisma |
+| `characters` | Player heroes (stats, position, inventory) | schema.prisma |
+| `enemy_definitions` | Monster stats, attack patterns, XP/gold rewards | `db/init-db-data.sql` |
+| `item_definitions` | Weapons, armor, potions, spells | `db/init-db-data.sql` |
+| `inventory` | Character's items | schema.prisma |
+| `equipment` | Equipped gear slots | schema.prisma |
+| `combat_log` | Battle history | schema.prisma |
+
+### Reloading Game Data
+
+To update enemy or item definitions:
+```bash
+# Edit the data file
+vim db/init-db-data.sql
+
+# Reload into local PostgreSQL
+psql $DATABASE_URL -f db/init-db-data.sql
+
+# For Heroku
+heroku pg:psql < db/init-db-data.sql
+```
 
 ### Sprites
 - `sprites/` - Source SVG files (organized by type)
