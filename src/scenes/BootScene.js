@@ -38,6 +38,8 @@ export default class BootScene extends Phaser.Scene {
         // Load all sprite atlases
         this.load.atlas('monsters', '/monsters.png', '/monsters.json');
         this.load.atlas('heroes', '/heroes.png', '/heroes.json');
+        this.load.atlas('monsters2', '/monsters2.png', '/monsters2.json');
+        this.load.atlas('heroes2', '/heroes2.png', '/heroes2.json');
         this.load.atlas('gear', '/gear.png', '/gear.json');
         this.load.atlas('items', '/items.png', '/items.json');
         this.load.atlas('npcs', '/npcs.png', '/npcs.json');

@@ -46,34 +46,28 @@ INSERT INTO item_definitions (name, description, sprite, item_type, is_stackable
 ON CONFLICT DO NOTHING;
 
 -- ============================================
--- ENEMY DEFINITIONS
+-- ENEMY DEFINITIONS (using monsters2 sprites)
 -- ============================================
 
--- Floor 1: Beginner enemies
-INSERT INTO enemy_definitions (name, display_name, sprite, base_hp, attack, defense, speed, base_xp, base_gold, min_floor, attack_pattern, approach_speed, telegraph_blinks) VALUES
-('slime', 'Bouncy Slime', 'slime', 6, 2, 0, 1, 10, 5, 1, 'straight', 600, 2),
-('bat', 'Flappy Bat', 'bat', 4, 2, 0, 3, 12, 6, 1, 'zigzag', 350, 1)
-ON CONFLICT DO NOTHING;
+-- Clear existing enemies first
+DELETE FROM enemy_definitions;
 
--- Floor 2+: Moderate enemies
+-- Floor 1: Beginner enemy
 INSERT INTO enemy_definitions (name, display_name, sprite, base_hp, attack, defense, speed, base_xp, base_gold, min_floor, attack_pattern, approach_speed, telegraph_blinks) VALUES
-('goblin', 'Grumpy Goblin', 'goblin', 8, 3, 1, 2, 15, 10, 2, 'pause', 500, 2),
-('mushroom', 'Silly Mushroom', 'mushroom', 10, 2, 2, 1, 15, 8, 2, 'fake', 800, 3)
-ON CONFLICT DO NOTHING;
+('slime', 'Gooey Slime', 'slime2', 6, 2, 0, 1, 10, 5, 1, 'straight', 600, 2);
 
--- Floor 4+: Stronger enemies
+-- Floor 2+: Moderate enemy
 INSERT INTO enemy_definitions (name, display_name, sprite, base_hp, attack, defense, speed, base_xp, base_gold, min_floor, attack_pattern, approach_speed, telegraph_blinks) VALUES
-('skeleton', 'Rattling Skeleton', 'skeleton', 12, 4, 2, 2, 25, 15, 4, 'straight', 450, 2),
-('ghost', 'Spooky Ghost', 'ghost', 8, 3, 0, 4, 20, 12, 4, 'fake', 400, 1)
-ON CONFLICT DO NOTHING;
+('goblin', 'Forest Goblin', 'goblin2', 8, 3, 1, 2, 15, 10, 2, 'pause', 500, 2);
 
--- Floor 6+: Tough enemies
+-- Floor 3+: Undead enemy
 INSERT INTO enemy_definitions (name, display_name, sprite, base_hp, attack, defense, speed, base_xp, base_gold, min_floor, attack_pattern, approach_speed, telegraph_blinks) VALUES
-('orc', 'Big Orc', 'orc', 20, 5, 3, 1, 40, 25, 6, 'pause', 700, 3),
-('vampire', 'Sneaky Vampire', 'vampire', 14, 6, 1, 4, 50, 30, 6, 'zigzag', 300, 1)
-ON CONFLICT DO NOTHING;
+('skeleton', 'Skeleton Knight', 'skeleton2', 12, 4, 2, 2, 25, 15, 3, 'straight', 450, 2);
 
--- Boss (Floor 10)
+-- Floor 4+: Beast enemy
 INSERT INTO enemy_definitions (name, display_name, sprite, base_hp, attack, defense, speed, base_xp, base_gold, min_floor, attack_pattern, approach_speed, telegraph_blinks) VALUES
-('slime-king', 'Slime King', 'slime-king', 40, 6, 3, 2, 100, 100, 10, 'straight', 400, 1)
-ON CONFLICT DO NOTHING;
+('wolf', 'Shadow Wolf', 'wolf2', 14, 5, 1, 4, 35, 20, 4, 'dash', 350, 1);
+
+-- Floor 5+: Boss-tier enemy
+INSERT INTO enemy_definitions (name, display_name, sprite, base_hp, attack, defense, speed, base_xp, base_gold, min_floor, attack_pattern, approach_speed, telegraph_blinks) VALUES
+('dragon', 'Fire Dragon', 'dragon2', 30, 6, 3, 2, 75, 50, 5, 'tripleShot', 500, 3);

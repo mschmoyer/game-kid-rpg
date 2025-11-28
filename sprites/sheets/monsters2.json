@@ -1,114 +1,114 @@
 {
   "frames": {
-    "slime-king": {
+    "dragon2": {
       "frame": {
         "x": 2,
         "y": 2,
-        "w": 96,
-        "h": 96
+        "w": 128,
+        "h": 128
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 96,
-        "h": 96
+        "w": 128,
+        "h": 128
       },
       "sourceSize": {
-        "w": 96,
-        "h": 96
+        "w": 128,
+        "h": 128
       }
     },
-    "bat": {
+    "goblin2": {
       "frame": {
-        "x": 100,
+        "x": 132,
         "y": 2,
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       },
       "sourceSize": {
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       }
     },
-    "goblin": {
+    "skeleton2": {
       "frame": {
-        "x": 166,
+        "x": 262,
         "y": 2,
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       },
       "sourceSize": {
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       }
     },
-    "mushroom": {
+    "slime2": {
       "frame": {
-        "x": 232,
+        "x": 392,
         "y": 2,
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       },
       "sourceSize": {
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       }
     },
-    "slime": {
+    "wolf2": {
       "frame": {
-        "x": 298,
+        "x": 522,
         "y": 2,
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       },
       "sourceSize": {
-        "w": 64,
-        "h": 64
+        "w": 128,
+        "h": 128
       }
     }
   },
   "meta": {
     "app": "slime-kingdom-packer",
     "version": "1.0",
-    "image": "monsters.png",
+    "image": "monsters2.png",
     "format": "RGBA8888",
     "size": {
-      "w": 512,
-      "h": 128
+      "w": 1024,
+      "h": 256
     },
     "scale": 1
   }

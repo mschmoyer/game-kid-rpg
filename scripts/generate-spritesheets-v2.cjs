@@ -19,6 +19,8 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 const groups = [
     { name: 'monsters', dir: 'monsters' },
     { name: 'heroes', dir: 'heroes' },
+    { name: 'monsters2', dir: 'monsters-pixellab' },
+    { name: 'heroes2', dir: 'heroes-pixellab' },
     { name: 'gear', dir: 'gear' },
     { name: 'items', dir: 'items' },
     { name: 'npcs', dir: 'npcs' },

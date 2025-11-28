@@ -141,13 +141,16 @@ export default class DungeonScene extends Phaser.Scene {
         const startX = this.returnX || (this.stairsUpPos.x + tileSize);
         const startY = this.returnY || this.stairsUpPos.y;
         this.playerSpriteBase = NetworkManager.getSprite();
+        // Use heroes2 atlas for hero2 sprites, otherwise heroes atlas
+        const heroAtlas = this.playerSpriteBase.startsWith('hero2') ? 'heroes2' : 'heroes';
         this.player = this.physics.add.sprite(
             startX,
             startY,
-            'heroes',
+            heroAtlas,
             this.playerSpriteBase
         );
-        this.player.setScale(0.5);
+        // Scale: hero2 (48px) needs 1.0, original (64x128) needs 0.5
+        this.player.setScale(heroAtlas === 'heroes2' ? 1.0 : 0.5);
         this.player.setCollideWorldBounds(true);
         this.player.body.setSize(32, 32);  // Match tile size for consistent collisions
 

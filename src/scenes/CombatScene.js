@@ -45,6 +45,14 @@ const ENEMY_ATTACKS = {
     'slime-king': [
         { movement: 'straight', speed: 400, blinks: 1, name: 'Royal Crush' },
         { movement: 'tripleShot', speed: 500, blinks: 2, name: 'Slime Burst' }
+    ],
+    'wolf': [
+        { movement: 'dash', speed: 350, blinks: 1, name: 'Lunge' },
+        { movement: 'multiHit', speed: 300, blinks: 2, hits: 2, name: 'Savage Bite' }
+    ],
+    'dragon': [
+        { movement: 'tripleShot', speed: 500, blinks: 3, name: 'Fire Breath' },
+        { movement: 'pause', speed: 600, blinks: 2, name: 'Tail Swipe' }
     ]
 };
 
@@ -104,8 +112,8 @@ export default class CombatScene extends Phaser.Scene {
         // Store enemy data from server
         this.enemyData = data.enemyData || {
             name: 'slime',
-            displayName: 'Bouncy Slime',
-            sprite: 'slime',
+            displayName: 'Gooey Slime',
+            sprite: 'slime2',
             hp: 6,
             attack: 2,
             defense: 0,
@@ -172,6 +180,10 @@ export default class CombatScene extends Phaser.Scene {
     }
 
     create() {
+        // Get player sprite info
+        this.playerSpriteBase = NetworkManager.getSprite();
+        this.heroAtlas = this.playerSpriteBase.startsWith('hero2') ? 'heroes2' : 'heroes';
+
         // Solid background
         this.cameras.main.setBackgroundColor('#1a3a1a');
 
@@ -191,12 +203,15 @@ export default class CombatScene extends Phaser.Scene {
         bg.strokeRect(0, GAME_HEIGHT, GAME_WIDTH, UI_HEIGHT);
 
         // Create player hero on the left (centered in battle area) - ready stance
-        this.playerSprite = this.add.sprite(50, 180, 'heroes', 'knight-right-ready');
-        this.playerSprite.setScale(1.5);
+        this.playerSprite = this.add.sprite(50, 180, this.heroAtlas, `${this.playerSpriteBase}-right-ready`);
+        this.playerSprite.setScale(this.heroAtlas === 'heroes2' ? 3.5 : 1.5); // Scale up smaller pixellab sprites
 
         // Create enemy monster on the right
-        this.enemySprite = this.add.sprite(250, 140, 'monsters', this.enemyType);
-        this.enemySprite.setScale(1.25);
+        const enemySpriteFrame = this.enemyData.sprite || this.enemyType;
+        const monsterAtlas = enemySpriteFrame.endsWith('2') ? 'monsters2' : 'monsters';
+        this.enemySprite = this.add.sprite(250, 140, monsterAtlas, enemySpriteFrame);
+        // Scale: monsters2 (128px) needs smaller scale, original monsters need 1.25
+        this.enemySprite.setScale(monsterAtlas === 'monsters2' ? 1.0 : 1.25);
 
         // Enemy name label (color changes based on HP)
         const enemyName = this.enemyData.displayName;
@@ -646,7 +661,7 @@ export default class CombatScene extends Phaser.Scene {
         console.log(`  Defense: ${this.playerDefense} + ${this.guardDefenseBonus} = ${this.playerDefense + this.guardDefenseBonus}`);
 
         // Show guard sprite/animation
-        this.playerSprite.setFrame('knight-right-parry');
+        this.playerSprite.setFrame(`${this.playerSpriteBase}-right-parry`);
         this.tweens.add({
             targets: this.playerSprite,
             tint: 0x4488ff,
@@ -655,7 +670,7 @@ export default class CombatScene extends Phaser.Scene {
             repeat: 1,
             onComplete: () => {
                 this.playerSprite.clearTint();
-                this.playerSprite.setFrame('knight-right-ready');
+                this.playerSprite.setFrame(`${this.playerSpriteBase}-right-ready`);
                 // End turn immediately after guard
                 this.time.delayedCall(300, () => {
                     this.enemyTurn();
@@ -685,7 +700,7 @@ export default class CombatScene extends Phaser.Scene {
         console.log(`  Player ATK: ${this.playerAttack} - Enemy DEF: ${this.enemyDefense} = ${damage} damage`);
 
         // Show attack sprite
-        this.playerSprite.setFrame('knight-right-attack');
+        this.playerSprite.setFrame(`${this.playerSpriteBase}-right-attack`);
 
         // Show slash effect
         const slash = this.add.sprite(
@@ -705,7 +720,7 @@ export default class CombatScene extends Phaser.Scene {
             onComplete: () => {
                 slash.destroy();
                 // Return to ready stance
-                this.playerSprite.setFrame('knight-right-ready');
+                this.playerSprite.setFrame(`${this.playerSpriteBase}-right-ready`);
                 this.damageEnemy(damage);
             }
         });
@@ -889,7 +904,7 @@ export default class CombatScene extends Phaser.Scene {
         this.messageText.setText(`You cast ${spell.name}!`);
 
         // Show magic casting sprite
-        this.playerSprite.setFrame('knight-right-magic');
+        this.playerSprite.setFrame(`${this.playerSpriteBase}-right-magic`);
 
         // Show sparkle effect
         const sparkle = this.add.sprite(
@@ -909,7 +924,7 @@ export default class CombatScene extends Phaser.Scene {
             onComplete: () => {
                 sparkle.destroy();
                 // Return to ready stance
-                this.playerSprite.setFrame('knight-right-ready');
+                this.playerSprite.setFrame(`${this.playerSpriteBase}-right-ready`);
 
                 // Calculate spell effect based on spell type
                 const magic = NetworkManager.getMagic();
@@ -1075,7 +1090,7 @@ export default class CombatScene extends Phaser.Scene {
         this.showDamageNumber(this.playerSprite.x, this.playerSprite.y - 20, damage, '#ff4444');
 
         // Show hit sprite
-        this.playerSprite.setFrame('knight-right-hit');
+        this.playerSprite.setFrame(`${this.playerSpriteBase}-right-hit`);
 
         // Flash player red
         this.tweens.add({
@@ -1087,7 +1102,7 @@ export default class CombatScene extends Phaser.Scene {
             onComplete: () => {
                 this.playerSprite.clearTint();
                 // Return to ready stance
-                this.playerSprite.setFrame('knight-right-ready');
+                this.playerSprite.setFrame(`${this.playerSpriteBase}-right-ready`);
             }
         });
 
@@ -1240,7 +1255,7 @@ export default class CombatScene extends Phaser.Scene {
             this.isProcessingAction = true;
 
             // Show KO sprite
-            this.playerSprite.setFrame('knight-ko');
+            this.playerSprite.setFrame(`${this.playerSpriteBase}-ko`);
 
             // Send defeat result to server - restore to max HP (bonked = knocked out, not dead)
             NetworkManager.sendCombatResult(
@@ -1965,7 +1980,7 @@ export default class CombatScene extends Phaser.Scene {
         this.showDamageNumber(this.playerSprite.x, this.playerSprite.y - 20, damage, '#ff4444');
 
         // Show hit sprite
-        this.playerSprite.setFrame('knight-right-hit');
+        this.playerSprite.setFrame(`${this.playerSpriteBase}-right-hit`);
 
         // Flash player red
         this.tweens.add({
@@ -1976,7 +1991,7 @@ export default class CombatScene extends Phaser.Scene {
             onComplete: () => {
                 this.playerSprite.clearTint();
                 // Return to ready stance
-                this.playerSprite.setFrame('knight-right-ready');
+                this.playerSprite.setFrame(`${this.playerSpriteBase}-right-ready`);
             }
         });
 
@@ -2114,7 +2129,7 @@ export default class CombatScene extends Phaser.Scene {
 
         // Visual feedback for successful parry timing
         // Show parry sprite
-        this.playerSprite.setFrame('knight-right-parry');
+        this.playerSprite.setFrame(`${this.playerSpriteBase}-right-parry`);
 
         // Flash player with shield effect
         this.tweens.add({
@@ -2126,7 +2141,7 @@ export default class CombatScene extends Phaser.Scene {
             onComplete: () => {
                 this.playerSprite.clearTint();
                 // Return to ready stance
-                this.playerSprite.setFrame('knight-right-ready');
+                this.playerSprite.setFrame(`${this.playerSpriteBase}-right-ready`);
             }
         });
 

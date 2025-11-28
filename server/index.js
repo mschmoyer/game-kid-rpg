@@ -40,8 +40,72 @@ if (process.env.NODE_ENV === 'production') {
 const connectedPlayers = {};
 
 // Hero sprites to assign to new characters
-const heroSprites = ['knight', 'mage', 'healer'];
+const heroSprites = ['hero2'];
 let nextHeroIndex = 0;
+
+/**
+ * Leveling curve - XP required to reach each level
+ * Level 2: 35 XP (~3-4 slimes)
+ * Each level requires progressively more XP
+ */
+const XP_THRESHOLDS = [
+    0,      // Level 1: 0 XP
+    35,     // Level 2: 35 XP (3-4 slimes)
+    85,     // Level 3: +50 XP
+    160,    // Level 4: +75 XP
+    260,    // Level 5: +100 XP
+    410,    // Level 6: +150 XP
+    610,    // Level 7: +200 XP
+    860,    // Level 8: +250 XP
+    1160,   // Level 9: +300 XP
+    1510,   // Level 10: +350 XP
+    1960,   // Level 11: +450 XP
+    2510,   // Level 12: +550 XP
+    3160,   // Level 13: +650 XP
+    3910,   // Level 14: +750 XP
+    4760,   // Level 15: +850 XP
+];
+
+/**
+ * Get level from total XP using the threshold table
+ */
+function getLevelFromXp(xp) {
+    for (let i = XP_THRESHOLDS.length - 1; i >= 0; i--) {
+        if (xp >= XP_THRESHOLDS[i]) {
+            return i + 1;
+        }
+    }
+    return 1;
+}
+
+/**
+ * Get XP required for next level
+ */
+function getXpForNextLevel(level) {
+    if (level >= XP_THRESHOLDS.length) {
+        // Beyond our table, extrapolate with increasing amounts
+        const lastDiff = XP_THRESHOLDS[XP_THRESHOLDS.length - 1] - XP_THRESHOLDS[XP_THRESHOLDS.length - 2];
+        return lastDiff + (level - XP_THRESHOLDS.length + 1) * 100;
+    }
+    return XP_THRESHOLDS[level] - XP_THRESHOLDS[level - 1];
+}
+
+/**
+ * Get total XP threshold for a level
+ */
+function getXpThresholdForLevel(level) {
+    if (level <= 1) return 0;
+    if (level <= XP_THRESHOLDS.length) {
+        return XP_THRESHOLDS[level - 1];
+    }
+    // Beyond our table, extrapolate
+    let xp = XP_THRESHOLDS[XP_THRESHOLDS.length - 1];
+    const lastDiff = XP_THRESHOLDS[XP_THRESHOLDS.length - 1] - XP_THRESHOLDS[XP_THRESHOLDS.length - 2];
+    for (let i = XP_THRESHOLDS.length; i < level; i++) {
+        xp += lastDiff + (i - XP_THRESHOLDS.length + 1) * 100;
+    }
+    return xp;
+}
 
 /**
  * Get or create a player by username (simple auth for now)
@@ -186,9 +250,11 @@ function calculateDefense(character) {
  * Build game state object to send to client
  */
 function buildGameState(character) {
-    // Calculate XP needed for next level (simple: 100 per level)
-    const xpToLevel = character.level * 100;
-    const currentLevelXp = character.experience % 100;
+    // Calculate XP using the leveling curve
+    const currentLevelThreshold = getXpThresholdForLevel(character.level);
+    const nextLevelThreshold = getXpThresholdForLevel(character.level + 1);
+    const xpForNextLevel = nextLevelThreshold - currentLevelThreshold;
+    const currentLevelXp = character.experience - currentLevelThreshold;
 
     return {
         id: character.id,
@@ -201,7 +267,7 @@ function buildGameState(character) {
             level: character.level,
             experience: character.experience,
             xp: currentLevelXp,
-            xpToLevel: 100,
+            xpToLevel: xpForNextLevel,
             hp: character.hp,
             maxHp: character.maxHp,
             mp: character.mp ?? 10,
@@ -480,8 +546,8 @@ io.on('connection', (socket) => {
             const newExperience = character.experience + (experienceGained || 0);
             const newGold = character.gold + (goldGained || 0);
 
-            // Check for level up (simple: every 100 XP)
-            const newLevel = Math.floor(newExperience / 100) + 1;
+            // Check for level up using the leveling curve
+            const newLevel = getLevelFromXp(newExperience);
             const leveledUp = newLevel > character.level;
             const levelsGained = newLevel - character.level;
 

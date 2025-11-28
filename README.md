@@ -2,6 +2,9 @@
 
 A retro-style RPG built with Phaser 3, featuring turn-based combat with a parry system, dungeon exploration, and multiplayer support.
 
+![Town Exploration](docs/screenshots/ss1.png)
+![Combat System](docs/screenshots/ss2.png)
+
 ## Features
 
 - **Town exploration** with NPC interactions (Inn, Shop, Cave entrance)
