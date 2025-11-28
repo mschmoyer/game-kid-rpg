@@ -3,6 +3,7 @@ import NetworkManager from '../network/NetworkManager.js';
 import { GAME_HEIGHT, UI_HEIGHT, GAME_WIDTH } from '../constants.js';
 import HeartDisplay from '../ui/HeartDisplay.js';
 import ManaDisplay from '../ui/ManaDisplay.js';
+import MobileControls from '../ui/MobileControls.js';
 
 export default class TownScene extends Phaser.Scene {
     constructor() {
@@ -274,14 +275,11 @@ export default class TownScene extends Phaser.Scene {
             strokeThickness: 2
         }).setOrigin(0.5, 0.5);
 
-        // Instructions
-        this.add.text(160, 276, 'Arrow keys or WASD to move | SPACE to talk', {
-            font: '8px monospace',
-            fill: '#aaaaaa'
-        }).setOrigin(0.5, 0.5);
-
         // Create dialog UI elements (hidden initially)
         this.createDialogUI();
+
+        // Mobile controls D-pad at bottom of UI panel
+        this.mobileControls = new MobileControls(this, GAME_HEIGHT + UI_HEIGHT - 60);
 
         // Initialize multiplayer
         this.setupMultiplayer();
@@ -597,9 +595,9 @@ export default class TownScene extends Phaser.Scene {
     update() {
         if (!this.player) return;
 
-        // Handle Space key for NPC interactions
+        // Handle Space key or mobile action button for NPC interactions
         // Use wasJustPressed (Phaser.Input.Keyboard.JustDown) to prevent multiple triggers
-        if (Phaser.Input.Keyboard.JustDown(this.spaceKey)) {
+        if (Phaser.Input.Keyboard.JustDown(this.spaceKey) || this.mobileControls.consumeAction()) {
             this.handleInteraction();
         }
 
@@ -617,11 +615,11 @@ export default class TownScene extends Phaser.Scene {
         // Reset velocity
         this.player.setVelocity(0);
 
-        // Check for movement input
-        const left = this.cursors.left.isDown || this.wasd.left.isDown;
-        const right = this.cursors.right.isDown || this.wasd.right.isDown;
-        const up = this.cursors.up.isDown || this.wasd.up.isDown;
-        const down = this.cursors.down.isDown || this.wasd.down.isDown;
+        // Check for movement input (keyboard + mobile controls)
+        const left = this.cursors.left.isDown || this.wasd.left.isDown || this.mobileControls.left;
+        const right = this.cursors.right.isDown || this.wasd.right.isDown || this.mobileControls.right;
+        const up = this.cursors.up.isDown || this.wasd.up.isDown || this.mobileControls.up;
+        const down = this.cursors.down.isDown || this.wasd.down.isDown || this.mobileControls.down;
 
         if (left) {
             this.player.setVelocityX(-this.speed);

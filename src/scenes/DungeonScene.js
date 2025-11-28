@@ -3,6 +3,7 @@ import NetworkManager from '../network/NetworkManager.js';
 import { GAME_HEIGHT, UI_HEIGHT, GAME_WIDTH } from '../constants.js';
 import HeartDisplay from '../ui/HeartDisplay.js';
 import ManaDisplay from '../ui/ManaDisplay.js';
+import MobileControls from '../ui/MobileControls.js';
 
 export default class DungeonScene extends Phaser.Scene {
     constructor() {
@@ -238,6 +239,9 @@ export default class DungeonScene extends Phaser.Scene {
         });
         this.updateStatusText();
 
+        // Mobile controls D-pad at bottom of UI panel (no action button - interactions are automatic)
+        this.mobileControls = new MobileControls(this, GAME_HEIGHT + UI_HEIGHT - 60, false);
+
         // Fade in when scene starts
         this.cameras.main.fadeIn(300, 0, 0, 0);
 
@@ -256,11 +260,11 @@ export default class DungeonScene extends Phaser.Scene {
         // Reset velocity
         this.player.setVelocity(0);
 
-        // Check for movement input
-        const left = this.cursors.left.isDown || this.wasd.left.isDown;
-        const right = this.cursors.right.isDown || this.wasd.right.isDown;
-        const up = this.cursors.up.isDown || this.wasd.up.isDown;
-        const down = this.cursors.down.isDown || this.wasd.down.isDown;
+        // Check for movement input (keyboard + mobile controls)
+        const left = this.cursors.left.isDown || this.wasd.left.isDown || this.mobileControls.left;
+        const right = this.cursors.right.isDown || this.wasd.right.isDown || this.mobileControls.right;
+        const up = this.cursors.up.isDown || this.wasd.up.isDown || this.mobileControls.up;
+        const down = this.cursors.down.isDown || this.wasd.down.isDown || this.mobileControls.down;
 
         if (left) {
             this.player.setVelocityX(-this.speed);

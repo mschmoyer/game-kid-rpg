@@ -196,7 +196,7 @@ export default class CombatScene extends Phaser.Scene {
 
         // Create enemy monster on the right
         this.enemySprite = this.add.sprite(250, 140, 'monsters', this.enemyType);
-        this.enemySprite.setScale(2.5);
+        this.enemySprite.setScale(1.25);
 
         // Enemy name label (color changes based on HP)
         const enemyName = this.enemyData.displayName;
@@ -313,6 +313,9 @@ export default class CombatScene extends Phaser.Scene {
         this.input.keyboard.on('keydown-SPACE', () => this.confirmAction());
         this.input.keyboard.on('keydown-ESC', () => this.handleBack());
 
+        // Create the big PARRY button (hidden initially, shown during enemy attacks)
+        this.createParryButton();
+
         // Fade in when scene starts
         this.cameras.main.fadeIn(300, 0, 0, 0);
 
@@ -333,6 +336,119 @@ export default class CombatScene extends Phaser.Scene {
         this.selectionBox.clear();
         this.selectionBox.lineStyle(2, 0xffff00, 1);
         this.selectionBox.strokeRoundedRect(x - 45, y - 14, 90, 28, 4);
+    }
+
+    /**
+     * Create the big PARRY button for mobile (hidden until enemy attacks)
+     */
+    createParryButton() {
+        const btnWidth = 280;
+        const btnHeight = 70;
+        const btnX = (GAME_WIDTH - btnWidth) / 2;
+        const btnY = GAME_HEIGHT + 100;
+
+        // Background
+        this.parryButtonBg = this.add.graphics();
+        this.parryButtonBg.fillStyle(0x00aaaa, 1);
+        this.parryButtonBg.fillRoundedRect(btnX, btnY, btnWidth, btnHeight, 12);
+        this.parryButtonBg.lineStyle(4, 0x00ffff, 1);
+        this.parryButtonBg.strokeRoundedRect(btnX, btnY, btnWidth, btnHeight, 12);
+        this.parryButtonBg.setDepth(300);
+        this.parryButtonBg.setVisible(false);
+
+        // Label
+        this.parryButtonText = this.add.text(GAME_WIDTH / 2, btnY + btnHeight / 2, 'PARRY!', {
+            font: 'bold 28px monospace',
+            fill: '#ffffff',
+            stroke: '#000000',
+            strokeThickness: 4
+        }).setOrigin(0.5, 0.5);
+        this.parryButtonText.setDepth(301);
+        this.parryButtonText.setVisible(false);
+
+        // Interactive zone
+        this.parryButtonZone = this.add.rectangle(
+            GAME_WIDTH / 2,
+            btnY + btnHeight / 2,
+            btnWidth + 20,
+            btnHeight + 20
+        );
+        this.parryButtonZone.setInteractive();
+        this.parryButtonZone.setDepth(302);
+        this.parryButtonZone.setAlpha(0.001);
+        this.parryButtonZone.setVisible(false);
+
+        // Handle tap - same logic as ENTER key
+        this.parryButtonZone.on('pointerdown', () => {
+            if (this.enemyAttackInProgress) {
+                if (this.parryLockedOut) {
+                    return;
+                } else if (this.parryWindowActive && !this.parrySuccessful) {
+                    this.parrySuccessful = true;
+                    this.showParrySuccess();
+                    // Visual feedback on button
+                    this.parryButtonBg.clear();
+                    this.parryButtonBg.fillStyle(0x00ff00, 1);
+                    this.parryButtonBg.fillRoundedRect(btnX, btnY, btnWidth, btnHeight, 12);
+                    this.parryButtonBg.lineStyle(4, 0x88ff88, 1);
+                    this.parryButtonBg.strokeRoundedRect(btnX, btnY, btnWidth, btnHeight, 12);
+                    this.parryButtonText.setColor('#88ff88');
+                } else if (!this.parryWindowActive) {
+                    this.parryLockedOut = true;
+                    this.showEarlyParry();
+                    // Visual feedback - button turns red
+                    this.parryButtonBg.clear();
+                    this.parryButtonBg.fillStyle(0xaa0000, 1);
+                    this.parryButtonBg.fillRoundedRect(btnX, btnY, btnWidth, btnHeight, 12);
+                    this.parryButtonBg.lineStyle(4, 0xff4444, 1);
+                    this.parryButtonBg.strokeRoundedRect(btnX, btnY, btnWidth, btnHeight, 12);
+                    this.parryButtonText.setText('TOO EARLY!');
+                    this.parryButtonText.setColor('#ff4444');
+                }
+            }
+        });
+    }
+
+    /**
+     * Show the big PARRY button and hide action buttons (called when enemy starts attacking)
+     */
+    showParryButton() {
+        const btnWidth = 280;
+        const btnHeight = 70;
+        const btnX = (GAME_WIDTH - btnWidth) / 2;
+        const btnY = GAME_HEIGHT + 100;
+
+        // Reset button appearance
+        this.parryButtonBg.clear();
+        this.parryButtonBg.fillStyle(0x00aaaa, 1);
+        this.parryButtonBg.fillRoundedRect(btnX, btnY, btnWidth, btnHeight, 12);
+        this.parryButtonBg.lineStyle(4, 0x00ffff, 1);
+        this.parryButtonBg.strokeRoundedRect(btnX, btnY, btnWidth, btnHeight, 12);
+        this.parryButtonText.setText('PARRY!');
+        this.parryButtonText.setColor('#ffffff');
+
+        // Show parry button
+        this.parryButtonBg.setVisible(true);
+        this.parryButtonText.setVisible(true);
+        this.parryButtonZone.setVisible(true);
+
+        // Hide action buttons and selection box
+        this.actionButtons.forEach(btn => btn.label.setVisible(false));
+        this.selectionBox.setVisible(false);
+    }
+
+    /**
+     * Hide the PARRY button and restore action buttons (called when enemy turn ends)
+     */
+    hideParryButton() {
+        // Hide parry button
+        this.parryButtonBg.setVisible(false);
+        this.parryButtonText.setVisible(false);
+        this.parryButtonZone.setVisible(false);
+
+        // Show action buttons and selection box
+        this.actionButtons.forEach(btn => btn.label.setVisible(true));
+        this.selectionBox.setVisible(true);
     }
 
     moveSelectionHorizontal(direction) {
@@ -1176,6 +1292,9 @@ export default class CombatScene extends Phaser.Scene {
         this.enemyAttackInProgress = false; // Enemy attack finished
         this.parryWindowActive = false;
 
+        // Hide the PARRY button and restore action buttons
+        this.hideParryButton();
+
         // Reset guard state after enemy attack
         if (this.isGuarding) {
             console.log('%c[GUARD RESET]', 'color: #4488ff');
@@ -1242,6 +1361,9 @@ export default class CombatScene extends Phaser.Scene {
         this.enemyAttackInProgress = true; // Enemy is now attacking
         const enemyName = this.enemyData.displayName || 'Monster';
         const pattern = this.getEnemyAttackPattern();
+
+        // Show the big PARRY button for mobile
+        this.showParryButton();
 
         console.log('%c[ENEMY TURN]', 'color: #ff4444; font-weight: bold');
         console.log(`  ${enemyName} uses: ${pattern.attackName}`);
