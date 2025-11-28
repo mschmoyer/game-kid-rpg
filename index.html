@@ -19,9 +19,10 @@
             font-family: sans-serif;
         }
         #game-container {
-            width: 100%;
+            width: calc(100% - 16px);  /* 8px margin on each side */
             max-width: 480px;  /* Cap size on desktop */
-            aspect-ratio: 320 / 488;  /* Maintain game proportions */
+            aspect-ratio: 320 / 638;  /* Maintain game proportions (30 banner + 288 game + 200 UI + 120 d-pad) */
+            margin: 0 8px;
         }
     </style>
 </head>

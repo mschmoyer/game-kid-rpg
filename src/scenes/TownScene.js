@@ -278,8 +278,8 @@ export default class TownScene extends Phaser.Scene {
         // Create dialog UI elements (hidden initially)
         this.createDialogUI();
 
-        // Mobile controls D-pad at bottom of UI panel
-        this.mobileControls = new MobileControls(this, GAME_HEIGHT + UI_HEIGHT - 60);
+        // Mobile controls D-pad at bottom of screen
+        this.mobileControls = new MobileControls(this, true);
 
         // Initialize multiplayer
         this.setupMultiplayer();

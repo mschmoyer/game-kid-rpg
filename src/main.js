@@ -11,13 +11,15 @@ import GameOverScene from './scenes/GameOverScene.js';
 
 // Game dimensions
 const GAME_WIDTH = 320;
+const BANNER_HEIGHT = 30; // Top safe area for iPhone notch
 const GAME_HEIGHT = 288;  // Main game area
 const UI_HEIGHT = 200;    // Bottom UI panel
+const DPAD_HEIGHT = 120;  // D-pad controls area
 
 const config = {
     type: Phaser.AUTO,
     width: GAME_WIDTH,
-    height: GAME_HEIGHT + UI_HEIGHT,  // 488 total
+    height: BANNER_HEIGHT + GAME_HEIGHT + UI_HEIGHT + DPAD_HEIGHT,  // 578 total
     parent: 'game-container',
     pixelArt: true,
     scale: {

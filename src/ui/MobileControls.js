@@ -1,15 +1,17 @@
 /**
- * MobileControls - On-screen D-pad for mobile devices
- * Displays a horizontal row of direction buttons: LEFT UP DOWN RIGHT + Action button
- * Can be added to any scene that needs movement controls
+ * MobileControls - Standard D-pad cross layout for mobile devices
+ * Layout:     ▲
+ *           ◀   ▶    [A]
+ *             ▼
  */
+import { BANNER_HEIGHT, GAME_HEIGHT, UI_HEIGHT, DPAD_HEIGHT, GAME_WIDTH } from '../constants.js';
+
 export default class MobileControls {
     /**
      * @param {Phaser.Scene} scene - The scene to add controls to
-     * @param {number} y - Y position for the controls (bottom of screen)
      * @param {boolean} showAction - Whether to show the action button (default: true)
      */
-    constructor(scene, y, showAction = true) {
+    constructor(scene, showAction = true) {
         this.scene = scene;
 
         // Direction states (checked by scene's update loop)
@@ -22,65 +24,73 @@ export default class MobileControls {
         this.action = false;
         this.actionJustPressed = false;
 
-        // Button size and spacing
-        const btnSize = 40;
-        const spacing = 6;
+        // Button size
+        const btnSize = 36;
+
+        // D-pad center position (left side of screen)
+        const dpadCenterX = 70;
+        const dpadCenterY = BANNER_HEIGHT + GAME_HEIGHT + UI_HEIGHT + (DPAD_HEIGHT / 2);
 
         // Container for all controls
         this.buttons = [];
 
-        // D-pad on left side
-        const dpadStartX = 10;
+        // Draw d-pad background (dark circle)
+        const dpadBg = scene.add.graphics();
+        dpadBg.fillStyle(0x2a2a4e, 0.8);
+        dpadBg.fillCircle(dpadCenterX, dpadCenterY, 52);
+        dpadBg.setDepth(199);
+        this.dpadBg = dpadBg;
+
+        // D-pad buttons in cross layout
         const directions = [
-            { key: 'left', label: '◀', x: dpadStartX },
-            { key: 'up', label: '▲', x: dpadStartX + btnSize + spacing },
-            { key: 'down', label: '▼', x: dpadStartX + (btnSize + spacing) * 2 },
-            { key: 'right', label: '▶', x: dpadStartX + (btnSize + spacing) * 3 }
+            { key: 'up', label: '▲', x: dpadCenterX, y: dpadCenterY - btnSize },
+            { key: 'down', label: '▼', x: dpadCenterX, y: dpadCenterY + btnSize },
+            { key: 'left', label: '◀', x: dpadCenterX - btnSize, y: dpadCenterY },
+            { key: 'right', label: '▶', x: dpadCenterX + btnSize, y: dpadCenterY }
         ];
 
         directions.forEach(dir => {
-            this.createButton(dir.x, y, btnSize, dir.label, dir.key);
+            this.createButton(dir.x, dir.y, btnSize, dir.label, dir.key);
         });
 
         // Action button on right side (for SPACE/interact)
         if (showAction) {
-            this.createActionButton(320 - btnSize - 15, y, btnSize);
+            this.createActionButton(GAME_WIDTH - 60, dpadCenterY, 44);
         }
     }
 
     /**
      * Create a single direction button
      */
-    createButton(x, y, size, label, direction) {
+    createButton(centerX, centerY, size, label, direction) {
+        const x = centerX - size/2;
+        const y = centerY - size/2;
+
         // Background
         const bg = this.scene.add.graphics();
         bg.fillStyle(0x3a3a5e, 0.9);
-        bg.fillRoundedRect(x, y, size, size, 8);
-        bg.lineStyle(2, 0x5a5a8e, 1);
-        bg.strokeRoundedRect(x, y, size, size, 8);
+        bg.fillRoundedRect(x, y, size, size, 6);
         bg.setDepth(200);
 
         // Label
-        const text = this.scene.add.text(x + size/2, y + size/2, label, {
-            font: 'bold 20px monospace',
+        const text = this.scene.add.text(centerX, centerY, label, {
+            font: 'bold 16px monospace',
             fill: '#ffffff'
         }).setOrigin(0.5, 0.5);
         text.setDepth(201);
 
-        // Interactive zone (slightly larger than visual for easier touch)
-        const hitArea = this.scene.add.rectangle(x + size/2, y + size/2, size + 10, size + 10);
+        // Interactive zone
+        const hitArea = this.scene.add.rectangle(centerX, centerY, size + 8, size + 8);
         hitArea.setInteractive();
         hitArea.setDepth(202);
-        hitArea.setAlpha(0.001); // Nearly invisible but still interactive
+        hitArea.setAlpha(0.001);
 
         // Press handlers
         hitArea.on('pointerdown', () => {
             this[direction] = true;
             bg.clear();
             bg.fillStyle(0x5a5a8e, 1);
-            bg.fillRoundedRect(x, y, size, size, 8);
-            bg.lineStyle(2, 0x7a7aae, 1);
-            bg.strokeRoundedRect(x, y, size, size, 8);
+            bg.fillRoundedRect(x, y, size, size, 6);
             text.setColor('#ffff00');
         });
 
@@ -88,9 +98,7 @@ export default class MobileControls {
             this[direction] = false;
             bg.clear();
             bg.fillStyle(0x3a3a5e, 0.9);
-            bg.fillRoundedRect(x, y, size, size, 8);
-            bg.lineStyle(2, 0x5a5a8e, 1);
-            bg.strokeRoundedRect(x, y, size, size, 8);
+            bg.fillRoundedRect(x, y, size, size, 6);
             text.setColor('#ffffff');
         });
 
@@ -98,9 +106,7 @@ export default class MobileControls {
             this[direction] = false;
             bg.clear();
             bg.fillStyle(0x3a3a5e, 0.9);
-            bg.fillRoundedRect(x, y, size, size, 8);
-            bg.lineStyle(2, 0x5a5a8e, 1);
-            bg.strokeRoundedRect(x, y, size, size, 8);
+            bg.fillRoundedRect(x, y, size, size, 6);
             text.setColor('#ffffff');
         });
 
@@ -110,24 +116,27 @@ export default class MobileControls {
     /**
      * Create the action button (like A button on a controller)
      */
-    createActionButton(x, y, size) {
+    createActionButton(centerX, centerY, size) {
+        const x = centerX - size/2;
+        const y = centerY - size/2;
+
         // Background - green color for action
         const bg = this.scene.add.graphics();
         bg.fillStyle(0x4a7a4a, 0.9);
-        bg.fillRoundedRect(x, y, size, size, 8);
+        bg.fillRoundedRect(x, y, size, size, size/2); // Circular
         bg.lineStyle(2, 0x6a9a6a, 1);
-        bg.strokeRoundedRect(x, y, size, size, 8);
+        bg.strokeRoundedRect(x, y, size, size, size/2);
         bg.setDepth(200);
 
         // Label
-        const text = this.scene.add.text(x + size/2, y + size/2, 'A', {
+        const text = this.scene.add.text(centerX, centerY, 'A', {
             font: 'bold 18px monospace',
             fill: '#ffffff'
         }).setOrigin(0.5, 0.5);
         text.setDepth(201);
 
         // Interactive zone
-        const hitArea = this.scene.add.rectangle(x + size/2, y + size/2, size + 10, size + 10);
+        const hitArea = this.scene.add.rectangle(centerX, centerY, size + 10, size + 10);
         hitArea.setInteractive();
         hitArea.setDepth(202);
         hitArea.setAlpha(0.001);
@@ -138,9 +147,9 @@ export default class MobileControls {
             this.actionJustPressed = true;
             bg.clear();
             bg.fillStyle(0x6a9a6a, 1);
-            bg.fillRoundedRect(x, y, size, size, 8);
+            bg.fillRoundedRect(x, y, size, size, size/2);
             bg.lineStyle(2, 0x8aba8a, 1);
-            bg.strokeRoundedRect(x, y, size, size, 8);
+            bg.strokeRoundedRect(x, y, size, size, size/2);
             text.setColor('#ffff00');
         });
 
@@ -148,9 +157,9 @@ export default class MobileControls {
             this.action = false;
             bg.clear();
             bg.fillStyle(0x4a7a4a, 0.9);
-            bg.fillRoundedRect(x, y, size, size, 8);
+            bg.fillRoundedRect(x, y, size, size, size/2);
             bg.lineStyle(2, 0x6a9a6a, 1);
-            bg.strokeRoundedRect(x, y, size, size, 8);
+            bg.strokeRoundedRect(x, y, size, size, size/2);
             text.setColor('#ffffff');
         });
 
@@ -158,9 +167,9 @@ export default class MobileControls {
             this.action = false;
             bg.clear();
             bg.fillStyle(0x4a7a4a, 0.9);
-            bg.fillRoundedRect(x, y, size, size, 8);
+            bg.fillRoundedRect(x, y, size, size, size/2);
             bg.lineStyle(2, 0x6a9a6a, 1);
-            bg.strokeRoundedRect(x, y, size, size, 8);
+            bg.strokeRoundedRect(x, y, size, size, size/2);
             text.setColor('#ffffff');
         });
 
@@ -190,6 +199,9 @@ export default class MobileControls {
      * Destroy all controls (call when scene shuts down)
      */
     destroy() {
+        if (this.dpadBg) {
+            this.dpadBg.destroy();
+        }
         this.buttons.forEach(btn => {
             btn.bg.destroy();
             btn.text.destroy();

@@ -239,8 +239,8 @@ export default class DungeonScene extends Phaser.Scene {
         });
         this.updateStatusText();
 
-        // Mobile controls D-pad at bottom of UI panel (no action button - interactions are automatic)
-        this.mobileControls = new MobileControls(this, GAME_HEIGHT + UI_HEIGHT - 60, false);
+        // Mobile controls D-pad at bottom of screen (no action button - interactions are automatic)
+        this.mobileControls = new MobileControls(this, false);
 
         // Fade in when scene starts
         this.cameras.main.fadeIn(300, 0, 0, 0);
