@@ -68,10 +68,12 @@ To update enemy or item definitions:
 vim db/init-db-data.sql
 
 # Reload into local PostgreSQL
-psql $DATABASE_URL -f db/init-db-data.sql
+source .env && psql $DATABASE_URL -f db/init-db-data.sql
 
-# For Heroku
-heroku pg:psql < db/init-db-data.sql
+# For Heroku - run commands individually via -c flag
+# (stdin piping doesn't work well with heroku pg:psql)
+heroku pg:psql -c "DELETE FROM enemy_definitions;"
+heroku pg:psql -c "INSERT INTO enemy_definitions (...) VALUES (...);"
 ```
 
 ### Sprites
