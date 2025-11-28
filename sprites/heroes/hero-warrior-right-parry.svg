@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 128" width="64" height="128" shape-rendering="crispEdges">
+  <!-- 16-bit Pixel Art Hero Warrior - PARRY STANCE - Sword raised to block, athletic defensive -->
+
+  <!-- Row 0-1: Helmet Plume - head ducked -->
+  <rect x="24" y="8" width="4" height="4" fill="#a68b29"/>
+  <rect x="28" y="8" width="4" height="4" fill="#d4af37"/>
+  <rect x="32" y="8" width="4" height="4" fill="#f4d03f"/>
+  <rect x="36" y="8" width="4" height="4" fill="#d4af37"/>
+  <rect x="40" y="8" width="4" height="4" fill="#a68b29"/>
+
+  <!-- Row 2: Helmet Top -->
+  <rect x="24" y="12" width="4" height="4" fill="#3d4866"/>
+  <rect x="28" y="12" width="4" height="4" fill="#5a6988"/>
+  <rect x="32" y="12" width="4" height="4" fill="#8899bb"/>
+  <rect x="36" y="12" width="4" height="4" fill="#5a6988"/>
+  <rect x="40" y="12" width="4" height="4" fill="#3d4866"/>
+
+  <!-- Row 3: Helmet Side -->
+  <rect x="20" y="16" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="16" width="4" height="4" fill="#5a6988"/>
+  <rect x="28" y="16" width="4" height="4" fill="#5a6988"/>
+  <rect x="32" y="16" width="4" height="4" fill="#8899bb"/>
+  <rect x="36" y="16" width="4" height="4" fill="#5a6988"/>
+  <rect x="40" y="16" width="4" height="4" fill="#3d4866"/>
+
+  <!-- Row 4: Helmet Visor -->
+  <rect x="20" y="20" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="20" width="4" height="4" fill="#5a6988"/>
+  <rect x="28" y="20" width="4" height="4" fill="#5a6988"/>
+  <rect x="32" y="20" width="4" height="4" fill="#d4af37"/>
+  <rect x="36" y="20" width="4" height="4" fill="#d4af37"/>
+  <rect x="40" y="20" width="4" height="4" fill="#3d4866"/>
+
+  <!-- Row 5: Face - focused -->
+  <rect x="20" y="24" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="24" width="4" height="4" fill="#5a6988"/>
+  <rect x="28" y="24" width="4" height="4" fill="#d4a456"/>
+  <rect x="32" y="24" width="4" height="4" fill="#f4c17a"/>
+  <rect x="36" y="24" width="4" height="4" fill="#2c3e50"/>
+  <rect x="40" y="24" width="4" height="4" fill="#f4c17a"/>
+  <rect x="44" y="24" width="4" height="4" fill="#d4a456"/>
+
+  <!-- Row 6: Face - determined -->
+  <rect x="20" y="28" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="28" width="4" height="4" fill="#3d4866"/>
+  <rect x="28" y="28" width="4" height="4" fill="#d4a456"/>
+  <rect x="32" y="28" width="4" height="4" fill="#f4c17a"/>
+  <rect x="36" y="28" width="4" height="4" fill="#f4c17a"/>
+  <rect x="40" y="28" width="4" height="4" fill="#f4c17a"/>
+  <rect x="44" y="28" width="4" height="4" fill="#3d4866"/>
+
+  <!-- Row 7: Neck -->
+  <rect x="24" y="32" width="4" height="4" fill="#3d4866"/>
+  <rect x="28" y="32" width="4" height="4" fill="#3d4866"/>
+  <rect x="32" y="32" width="4" height="4" fill="#d4a456"/>
+  <rect x="36" y="32" width="4" height="4" fill="#f4c17a"/>
+  <rect x="40" y="32" width="4" height="4" fill="#3d4866"/>
+
+  <!-- Row 8: Sword raised high for block - blade horizontal -->
+  <rect x="28" y="36" width="4" height="4" fill="#b0b0b0"/>
+  <rect x="32" y="36" width="4" height="4" fill="#e8e8e8"/>
+  <rect x="36" y="36" width="4" height="4" fill="#e8e8e8"/>
+  <rect x="40" y="36" width="4" height="4" fill="#e8e8e8"/>
+  <rect x="44" y="36" width="4" height="4" fill="#e8e8e8"/>
+  <rect x="48" y="36" width="4" height="4" fill="#b0b0b0"/>
+  <rect x="52" y="36" width="4" height="4" fill="#c0c0c0"/>
+
+  <!-- Row 9: Shoulder/Arm holding sword up -->
+  <rect x="12" y="40" width="4" height="4" fill="#8c2828"/>
+  <rect x="16" y="40" width="4" height="4" fill="#c23a3a"/>
+  <rect x="20" y="40" width="4" height="4" fill="#c23a3a"/>
+  <rect x="24" y="40" width="4" height="4" fill="#5a6988"/>
+  <rect x="28" y="40" width="4" height="4" fill="#d4af37"/>
+  <rect x="32" y="40" width="4" height="4" fill="#8b4513"/>
+  <rect x="36" y="40" width="4" height="4" fill="#f4c17a"/>
+  <rect x="40" y="40" width="4" height="4" fill="#d4a456"/>
+  <rect x="44" y="40" width="4" height="4" fill="#5a6988"/>
+  <rect x="48" y="40" width="4" height="4" fill="#8899bb"/>
+
+  <!-- Row 10: Torso - braced -->
+  <rect x="8" y="44" width="4" height="4" fill="#8c2828"/>
+  <rect x="12" y="44" width="4" height="4" fill="#c23a3a"/>
+  <rect x="16" y="44" width="4" height="4" fill="#c23a3a"/>
+  <rect x="20" y="44" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="44" width="4" height="4" fill="#5a6988"/>
+  <rect x="28" y="44" width="4" height="4" fill="#d4af37"/>
+  <rect x="32" y="44" width="4" height="4" fill="#5a6988"/>
+  <rect x="36" y="44" width="4" height="4" fill="#8899bb"/>
+  <rect x="40" y="44" width="4" height="4" fill="#5a6988"/>
+  <rect x="44" y="44" width="4" height="4" fill="#5a6988"/>
+  <rect x="48" y="44" width="4" height="4" fill="#3d4866"/>
+
+  <!-- Row 11: Chest - emblem -->
+  <rect x="8" y="48" width="4" height="4" fill="#8c2828"/>
+  <rect x="12" y="48" width="4" height="4" fill="#8c2828"/>
+  <rect x="16" y="48" width="4" height="4" fill="#c23a3a"/>
+  <rect x="20" y="48" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="48" width="4" height="4" fill="#5a6988"/>
+  <rect x="28" y="48" width="4" height="4" fill="#f4d03f"/>
+  <rect x="32" y="48" width="4" height="4" fill="#d4af37"/>
+  <rect x="36" y="48" width="4" height="4" fill="#5a6988"/>
+  <rect x="40" y="48" width="4" height="4" fill="#5a6988"/>
+  <rect x="44" y="48" width="4" height="4" fill="#3d4866"/>
+
+  <!-- Row 12: Lower chest -->
+  <rect x="12" y="52" width="4" height="4" fill="#8c2828"/>
+  <rect x="16" y="52" width="4" height="4" fill="#c23a3a"/>
+  <rect x="20" y="52" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="52" width="4" height="4" fill="#5a6988"/>
+  <rect x="28" y="52" width="4" height="4" fill="#d4af37"/>
+  <rect x="32" y="52" width="4" height="4" fill="#5a6988"/>
+  <rect x="36" y="52" width="4" height="4" fill="#5a6988"/>
+  <rect x="40" y="52" width="4" height="4" fill="#3d4866"/>
+  <rect x="44" y="52" width="4" height="4" fill="#5a6988"/>
+
+  <!-- Row 13: Belt -->
+  <rect x="12" y="56" width="4" height="4" fill="#8c2828"/>
+  <rect x="16" y="56" width="4" height="4" fill="#c23a3a"/>
+  <rect x="20" y="56" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="56" width="4" height="4" fill="#8b4513"/>
+  <rect x="28" y="56" width="4" height="4" fill="#f4d03f"/>
+  <rect x="32" y="56" width="4" height="4" fill="#d4af37"/>
+  <rect x="36" y="56" width="4" height="4" fill="#8b4513"/>
+  <rect x="40" y="56" width="4" height="4" fill="#5a6988"/>
+  <rect x="44" y="56" width="4" height="4" fill="#5a6988"/>
+
+  <!-- Row 14: Hip - athletic stance -->
+  <rect x="8" y="60" width="4" height="4" fill="#8c2828"/>
+  <rect x="12" y="60" width="4" height="4" fill="#c23a3a"/>
+  <rect x="16" y="60" width="4" height="4" fill="#8c2828"/>
+  <rect x="20" y="60" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="60" width="4" height="4" fill="#5a6988"/>
+  <rect x="28" y="60" width="4" height="4" fill="#5a6988"/>
+  <rect x="32" y="60" width="4" height="4" fill="#3d4866"/>
+  <rect x="36" y="60" width="4" height="4" fill="#5a6988"/>
+  <rect x="40" y="60" width="4" height="4" fill="#8899bb"/>
+  <rect x="44" y="60" width="4" height="4" fill="#5a6988"/>
+  <rect x="48" y="60" width="4" height="4" fill="#5a6988"/>
+
+  <!-- Row 15: Upper legs - wide defensive stance -->
+  <rect x="4" y="64" width="4" height="4" fill="#8c2828"/>
+  <rect x="8" y="64" width="4" height="4" fill="#3d4866"/>
+  <rect x="12" y="64" width="4" height="4" fill="#5a6988"/>
+  <rect x="16" y="64" width="4" height="4" fill="#5a6988"/>
+  <rect x="20" y="64" width="4" height="4" fill="#3d4866"/>
+  <rect x="24" y="64" width="4" height="4" fill="#5a6988"/>
+  <rect x="28" y="64" width="4" height="4" fill="#5a6988"/>
+  <rect x="36" y="64" width="4" height="4" fill="#5a6988"/>
+  <rect x="40" y="64" width="4" height="4" fill="#5a6988"/>
+  <rect x="44" y="64" width="4" height="4" fill="#3d4866"/>
+  <rect x="48" y="64" width="4" height="4" fill="#5a6988"/>
+  <rect x="52" y="64" width="4" height="4" fill="#5a6988"/>
+
+  <!-- Row 16: Thighs -->
+  <rect x="4" y="68" width="4" height="4" fill="#3d4866"/>
+  <rect x="8" y="68" width="4" height="4" fill="#5a6988"/>
+  <rect x="12" y="68" width="4" height="4" fill="#5a6988"/>
+  <rect x="16" y="68" width="4" height="4" fill="#3d4866"/>
+  <rect x="20" y="68" width="4" height="4" fill="#5a6988"/>
+  <rect x="24" y="68" width="4" height="4" fill="#3d4866"/>
+  <rect x="36" y="68" width="4" height="4" fill="#3d4866"/>
+  <rect x="40" y="68" width="4" height="4" fill="#5a6988"/>
+  <rect x="44" y="68" width="4" height="4" fill="#5a6988"/>
+  <rect x="48" y="68" width="4" height="4" fill="#3d4866"/>
+  <rect x="52" y="68" width="4" height="4" fill="#5a6988"/>
+
+  <!-- Row 17: Lower thigh -->
+  <rect x="4" y="72" width="4" height="4" fill="#5a6988"/>
+  <rect x="8" y="72" width="4" height="4" fill="#3d4866"/>
+  <rect x="12" y="72" width="4" height="4" fill="#5a6988"/>
+  <rect x="16" y="72" width="4" height="4" fill="#5a6988"/>
+  <rect x="20" y="72" width="4" height="4" fill="#5a6988"/>
+  <rect x="40" y="72" width="4" height="4" fill="#5a6988"/>
+  <rect x="44" y="72" width="4" height="4" fill="#5a6988"/>
+  <rect x="48" y="72" width="4" height="4" fill="#5a6988"/>
+  <rect x="52" y="72" width="4" height="4" fill="#3d4866"/>
+
+  <!-- Row 18: Knee area -->
+  <rect x="4" y="76" width="4" height="4" fill="#5a6988"/>
+  <rect x="8" y="76" width="4" height="4" fill="#5a6988"/>
+  <rect x="12" y="76" width="4" height="4" fill="#8899bb"/>
+  <rect x="16" y="76" width="4" height="4" fill="#d4af37"/>
+  <rect x="20" y="76" width="4" height="4" fill="#5a6988"/>
+  <rect x="40" y="76" width="4" height="4" fill="#5a6988"/>
+  <rect x="44" y="76" width="4" height="4" fill="#d4af37"/>
+  <rect x="48" y="76" width="4" height="4" fill="#8899bb"/>
+  <rect x="52" y="76" width="4" height="4" fill="#5a6988"/>
+  <rect x="56" y="76" width="4" height="4" fill="#5a6988"/>
+
+  <!-- Row 19: Shin -->
+  <rect x="4" y="80" width="4" height="4" fill="#3d4866"/>
+  <rect x="8" y="80" width="4" height="4" fill="#5a6988"/>
+  <rect x="12" y="80" width="4" height="4" fill="#5a6988"/>
+  <rect x="16" y="80" width="4" height="4" fill="#5a6988"/>
+  <rect x="20" y="80" width="4" height="4" fill="#3d4866"/>
+  <rect x="40" y="80" width="4" height="4" fill="#3d4866"/>
+  <rect x="44" y="80" width="4" height="4" fill="#5a6988"/>
+  <rect x="48" y="80" width="4" height="4" fill="#5a6988"/>
+  <rect x="52" y="80" width="4" height="4" fill="#5a6988"/>
+  <rect x="56" y="80" width="4" height="4" fill="#3d4866"/>
+
+  <!-- Row 20: Lower shin -->
+  <rect x="4" y="84" width="4" height="4" fill="#5a6988"/>
+  <rect x="8" y="84" width="4" height="4" fill="#5a6988"/>
+  <rect x="12" y="84" width="4" height="4" fill="#3d4866"/>
+  <rect x="16" y="84" width="4" height="4" fill="#5a6988"/>
+  <rect x="44" y="84" width="4" height="4" fill="#5a6988"/>
+  <rect x="48" y="84" width="4" height="4" fill="#3d4866"/>
+  <rect x="52" y="84" width="4" height="4" fill="#5a6988"/>
+  <rect x="56" y="84" width="4" height="4" fill="#5a6988"/>
+
+  <!-- Row 21: Boot top -->
+  <rect x="0" y="88" width="4" height="4" fill="#4a3728"/>
+  <rect x="4" y="88" width="4" height="4" fill="#4a3728"/>
+  <rect x="8" y="88" width="4" height="4" fill="#2d2218"/>
+  <rect x="12" y="88" width="4" height="4" fill="#4a3728"/>
+  <rect x="16" y="88" width="4" height="4" fill="#4a3728"/>
+  <rect x="44" y="88" width="4" height="4" fill="#4a3728"/>
+  <rect x="48" y="88" width="4" height="4" fill="#4a3728"/>
+  <rect x="52" y="88" width="4" height="4" fill="#2d2218"/>
+  <rect x="56" y="88" width="4" height="4" fill="#4a3728"/>
+  <rect x="60" y="88" width="4" height="4" fill="#4a3728"/>
+
+  <!-- Row 22: Boot -->
+  <rect x="0" y="92" width="4" height="4" fill="#4a3728"/>
+  <rect x="4" y="92" width="4" height="4" fill="#2d2218"/>
+  <rect x="8" y="92" width="4" height="4" fill="#4a3728"/>
+  <rect x="12" y="92" width="4" height="4" fill="#5a4030"/>
+  <rect x="16" y="92" width="4" height="4" fill="#4a3728"/>
+  <rect x="20" y="92" width="4" height="4" fill="#2d2218"/>
+  <rect x="44" y="92" width="4" height="4" fill="#2d2218"/>
+  <rect x="48" y="92" width="4" height="4" fill="#4a3728"/>
+  <rect x="52" y="92" width="4" height="4" fill="#5a4030"/>
+  <rect x="56" y="92" width="4" height="4" fill="#4a3728"/>
+  <rect x="60" y="92" width="4" height="4" fill="#2d2218"/>
+
+  <!-- Row 23: Boot sole -->
+  <rect x="0" y="96" width="4" height="4" fill="#2d2218"/>
+  <rect x="4" y="96" width="4" height="4" fill="#1a1510"/>
+  <rect x="8" y="96" width="4" height="4" fill="#1a1510"/>
+  <rect x="12" y="96" width="4" height="4" fill="#1a1510"/>
+  <rect x="16" y="96" width="4" height="4" fill="#2d2218"/>
+  <rect x="20" y="96" width="4" height="4" fill="#2d2218"/>
+  <rect x="44" y="96" width="4" height="4" fill="#2d2218"/>
+  <rect x="48" y="96" width="4" height="4" fill="#2d2218"/>
+  <rect x="52" y="96" width="4" height="4" fill="#1a1510"/>
+  <rect x="56" y="96" width="4" height="4" fill="#1a1510"/>
+  <rect x="60" y="96" width="4" height="4" fill="#1a1510"/>
+</svg>

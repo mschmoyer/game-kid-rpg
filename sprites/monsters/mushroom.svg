@@ -1,0 +1,81 @@
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Mushroom Cap Shadow -->
+  <rect x="24" y="72" width="80" height="8" fill="#8B0000"/>
+
+  <!-- Mushroom Cap Base (Red) -->
+  <rect x="16" y="24" width="96" height="8" fill="#DC143C"/>
+  <rect x="8" y="32" width="112" height="8" fill="#DC143C"/>
+  <rect x="8" y="40" width="112" height="8" fill="#DC143C"/>
+  <rect x="8" y="48" width="112" height="8" fill="#DC143C"/>
+  <rect x="16" y="56" width="96" height="8" fill="#DC143C"/>
+  <rect x="24" y="64" width="80" height="8" fill="#DC143C"/>
+
+  <!-- Cap Highlights (Lighter Red) -->
+  <rect x="24" y="24" width="32" height="8" fill="#FF4444"/>
+  <rect x="16" y="32" width="40" height="8" fill="#FF4444"/>
+  <rect x="16" y="40" width="32" height="8" fill="#FF4444"/>
+
+  <!-- White Spots on Cap -->
+  <rect x="32" y="40" width="16" height="8" fill="#FFFFFF"/>
+  <rect x="24" y="48" width="16" height="8" fill="#FFFFFF"/>
+  <rect x="32" y="56" width="16" height="8" fill="#FFFFFF"/>
+
+  <rect x="64" y="32" width="16" height="8" fill="#FFFFFF"/>
+  <rect x="56" y="40" width="16" height="8" fill="#FFFFFF"/>
+  <rect x="64" y="48" width="16" height="8" fill="#FFFFFF"/>
+
+  <rect x="88" y="48" width="16" height="8" fill="#FFFFFF"/>
+  <rect x="80" y="56" width="16" height="8" fill="#FFFFFF"/>
+  <rect x="88" y="64" width="16" height="8" fill="#FFFFFF"/>
+
+  <!-- Mushroom Stem (Cream/Tan) -->
+  <rect x="40" y="72" width="48" height="8" fill="#F5DEB3"/>
+  <rect x="40" y="80" width="48" height="8" fill="#F5DEB3"/>
+  <rect x="40" y="88" width="48" height="8" fill="#F5DEB3"/>
+  <rect x="40" y="96" width="48" height="8" fill="#F5DEB3"/>
+
+  <!-- Stem Shadow/Depth -->
+  <rect x="72" y="72" width="16" height="8" fill="#D2B48C"/>
+  <rect x="72" y="80" width="16" height="8" fill="#D2B48C"/>
+  <rect x="72" y="88" width="16" height="8" fill="#D2B48C"/>
+  <rect x="72" y="96" width="16" height="8" fill="#D2B48C"/>
+
+  <!-- Face - Eyes (Slightly Sinister) -->
+  <!-- Left Eye White -->
+  <rect x="48" y="80" width="8" height="8" fill="#FFFFFF"/>
+  <rect x="48" y="88" width="8" height="8" fill="#FFFFFF"/>
+  <!-- Left Pupil (Offset for sinister look) -->
+  <rect x="48" y="88" width="8" height="8" fill="#000000"/>
+
+  <!-- Right Eye White -->
+  <rect x="72" y="80" width="8" height="8" fill="#FFFFFF"/>
+  <rect x="72" y="88" width="8" height="8" fill="#FFFFFF"/>
+  <!-- Right Pupil (Offset for sinister look) -->
+  <rect x="72" y="88" width="8" height="8" fill="#000000"/>
+
+  <!-- Mouth (Sinister Grin) -->
+  <rect x="56" y="96" width="8" height="8" fill="#000000"/>
+  <rect x="64" y="96" width="8" height="8" fill="#000000"/>
+  <rect x="48" y="88" width="8" height="8" fill="#000000"/>
+  <rect x="72" y="88" width="8" height="8" fill="#000000"/>
+
+  <!-- Stubby Legs -->
+  <!-- Left Leg -->
+  <rect x="40" y="104" width="16" height="8" fill="#8B7355"/>
+  <rect x="40" y="112" width="16" height="8" fill="#8B7355"/>
+  <!-- Left Foot -->
+  <rect x="32" y="120" width="24" height="8" fill="#654321"/>
+
+  <!-- Right Leg -->
+  <rect x="72" y="104" width="16" height="8" fill="#8B7355"/>
+  <rect x="72" y="112" width="16" height="8" fill="#8B7355"/>
+  <!-- Right Foot -->
+  <rect x="72" y="120" width="24" height="8" fill="#654321"/>
+
+  <!-- Cap Rim Detail (Dark) -->
+  <rect x="24" y="64" width="80" height="8" fill="#8B0000"/>
+
+  <!-- Additional facial detail - eyebrow for more expression -->
+  <rect x="48" y="72" width="8" height="8" fill="#000000"/>
+  <rect x="72" y="72" width="8" height="8" fill="#000000"/>
+</svg>

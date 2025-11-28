@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- Base wall color (darker than floor) -->
+  <rect width="32" height="32" fill="#2a2a32"/>
+
+  <!-- Brick pattern - horizontal mortar lines -->
+  <rect x="0" y="7" width="32" height="2" fill="#1a1a22"/>
+  <rect x="0" y="15" width="32" height="2" fill="#1a1a22"/>
+  <rect x="0" y="23" width="32" height="2" fill="#1a1a22"/>
+  <rect x="0" y="31" width="32" height="1" fill="#1a1a22"/>
+
+  <!-- Brick pattern - vertical mortar (alternating rows) -->
+  <rect x="15" y="0" width="2" height="8" fill="#1a1a22"/>
+  <rect x="7" y="8" width="2" height="8" fill="#1a1a22"/>
+  <rect x="23" y="8" width="2" height="8" fill="#1a1a22"/>
+  <rect x="15" y="16" width="2" height="8" fill="#1a1a22"/>
+  <rect x="7" y="24" width="2" height="8" fill="#1a1a22"/>
+  <rect x="23" y="24" width="2" height="8" fill="#1a1a22"/>
+
+  <!-- Lighter brick highlights -->
+  <rect x="2" y="2" width="4" height="4" fill="#3a3a42"/>
+  <rect x="18" y="2" width="4" height="4" fill="#3a3a42"/>
+  <rect x="10" y="10" width="4" height="4" fill="#3a3a42"/>
+  <rect x="26" y="10" width="4" height="4" fill="#3a3a42"/>
+  <rect x="2" y="18" width="4" height="4" fill="#3a3a42"/>
+  <rect x="18" y="18" width="4" height="4" fill="#3a3a42"/>
+  <rect x="10" y="26" width="4" height="4" fill="#3a3a42"/>
+
+  <!-- Darker brick shadows -->
+  <rect x="8" y="2" width="4" height="4" fill="#222228"/>
+  <rect x="24" y="2" width="4" height="4" fill="#222228"/>
+  <rect x="2" y="10" width="4" height="4" fill="#222228"/>
+  <rect x="18" y="10" width="4" height="4" fill="#222228"/>
+  <rect x="8" y="18" width="4" height="4" fill="#222228"/>
+  <rect x="24" y="18" width="4" height="4" fill="#222228"/>
+  <rect x="2" y="26" width="4" height="4" fill="#222228"/>
+
+  <!-- Moss/age spots -->
+  <rect x="4" y="4" width="2" height="2" fill="#2d3d2d"/>
+  <rect x="20" y="12" width="2" height="2" fill="#2d3d2d"/>
+  <rect x="12" y="20" width="2" height="2" fill="#2d3d2d"/>
+  <rect x="28" y="28" width="2" height="2" fill="#2d3d2d"/>
+</svg>

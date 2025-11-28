@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- Shadow underneath -->
+  <rect x="4" y="26" width="24" height="4" fill="#1a1a22"/>
+
+  <!-- Chest base (wooden box) -->
+  <rect x="4" y="16" width="24" height="12" fill="#8b5a2b"/>
+
+  <!-- Open lid (tilted back) -->
+  <rect x="4" y="4" width="24" height="4" fill="#8b5a2b"/>
+  <rect x="4" y="8" width="24" height="2" fill="#a0522d"/>
+  <rect x="4" y="10" width="2" height="6" fill="#6b4423"/>
+  <rect x="26" y="10" width="2" height="6" fill="#6b4423"/>
+
+  <!-- Inside lid (darker) -->
+  <rect x="6" y="4" width="20" height="4" fill="#5a3a1b"/>
+
+  <!-- Wood grain lines on base -->
+  <rect x="4" y="20" width="24" height="1" fill="#6b4423"/>
+  <rect x="4" y="24" width="24" height="1" fill="#6b4423"/>
+
+  <!-- Metal bands - horizontal -->
+  <rect x="4" y="16" width="24" height="2" fill="#4a4a52"/>
+  <rect x="4" y="26" width="24" height="2" fill="#4a4a52"/>
+  <rect x="4" y="4" width="24" height="1" fill="#4a4a52"/>
+
+  <!-- Metal bands - vertical -->
+  <rect x="4" y="4" width="2" height="24" fill="#4a4a52"/>
+  <rect x="26" y="4" width="2" height="24" fill="#4a4a52"/>
+  <rect x="14" y="16" width="4" height="12" fill="#4a4a52"/>
+
+  <!-- Metal band highlights -->
+  <rect x="4" y="16" width="24" height="1" fill="#6a6a72"/>
+  <rect x="4" y="4" width="1" height="24" fill="#6a6a72"/>
+  <rect x="14" y="16" width="1" height="12" fill="#6a6a72"/>
+
+  <!-- Treasure inside (golden glow) -->
+  <rect x="8" y="12" width="16" height="4" fill="#f4d03f"/>
+  <rect x="10" y="10" width="12" height="2" fill="#d4af37"/>
+
+  <!-- Golden coins/jewels -->
+  <rect x="10" y="12" width="3" height="3" fill="#ffd700"/>
+  <rect x="15" y="11" width="2" height="2" fill="#ff6b6b"/>
+  <rect x="19" y="12" width="3" height="3" fill="#ffd700"/>
+  <rect x="14" y="13" width="4" height="2" fill="#ffeaa7"/>
+
+  <!-- Sparkle effect -->
+  <rect x="12" y="8" width="2" height="2" fill="#ffffff"/>
+  <rect x="18" y="10" width="2" height="2" fill="#ffffff"/>
+
+  <!-- Wood highlights -->
+  <rect x="8" y="18" width="4" height="2" fill="#b87333"/>
+  <rect x="20" y="22" width="4" height="2" fill="#b87333"/>
+</svg>

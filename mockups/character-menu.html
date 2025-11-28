@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slime Kingdom - Character Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Press Start 2P', monospace;
+            image-rendering: pixelated;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .game-screen {
+            width: 512px;
+            height: 480px;
+            background: linear-gradient(135deg, #1a1a3e 0%, #2a2a5e 100%);
+            border: 8px solid #4a4a6a;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(100, 100, 200, 0.3);
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            grid-template-rows: auto 1fr;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        /* Header */
+        .menu-header {
+            grid-column: 1 / -1;
+            background: rgba(0, 0, 0, 0.6);
+            border: 3px solid #ffd700;
+            border-radius: 4px;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 14px;
+            color: #ffd700;
+        }
+
+        .header-info {
+            display: flex;
+            gap: 20px;
+            font-size: 10px;
+        }
+
+        .gold-display {
+            color: #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .time-display {
+            color: #88aaff;
+        }
+
+        /* Side menu */
+        .side-menu {
+            background: rgba(0, 0, 0, 0.6);
+            border: 3px solid #4a4a6a;
+            border-radius: 4px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .menu-item {
+            padding: 10px;
+            font-size: 10px;
+            color: #888;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.1s;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .menu-item.selected {
+            background: #3a3a6a;
+            border-color: #ffd700;
+            color: #fff;
+        }
+
+        .menu-icon {
+            font-size: 14px;
+        }
+
+        /* Main content area */
+        .main-content {
+            background: rgba(0, 0, 0, 0.6);
+            border: 3px solid #4a4a6a;
+            border-radius: 4px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Character card */
+        .character-card {
+            background: linear-gradient(180deg, #2a2a4a 0%, #1a1a3a 100%);
+            border: 3px solid #4a6a8a;
+            border-radius: 8px;
+            padding: 12px;
+            display: grid;
+            grid-template-columns: 80px 1fr 120px;
+            gap: 12px;
+        }
+
+        .character-card.player1 {
+            border-color: #4169e1;
+        }
+
+        .character-card.player2 {
+            border-color: #dc143c;
+        }
+
+        /* Character portrait */
+        .char-portrait {
+            width: 80px;
+            height: 80px;
+            background: #1a1a2e;
+            border: 3px solid #3a3a5a;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .portrait-sprite {
+            width: 48px;
+            height: 60px;
+            position: relative;
+        }
+
+        .portrait-head {
+            width: 36px;
+            height: 28px;
+            background: #ffdbac;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .portrait-hair {
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 34px;
+            height: 14px;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .portrait-hair.brown { background: #8b4513; }
+        .portrait-hair.blonde { background: #ffd700; }
+
+        .portrait-eyes {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .portrait-eye {
+            width: 5px;
+            height: 5px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .portrait-body {
+            width: 40px;
+            height: 36px;
+            border-radius: 8px 8px 4px 4px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .portrait-body.knight { background: #4169e1; }
+        .portrait-body.mage { background: #dc143c; }
+
+        .level-badge {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            background: #ffd700;
+            color: #000;
+            font-size: 8px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Character info */
+        .char-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .char-name {
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .char-class {
+            font-size: 8px;
+            color: #888;
+        }
+
+        .char-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .stat-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-label {
+            font-size: 8px;
+            color: #888;
+            min-width: 20px;
+        }
+
+        .stat-bar-container {
+            flex: 1;
+            height: 10px;
+            background: #1a1a2e;
+            border: 2px solid #3a3a5a;
+            position: relative;
+        }
+
+        .stat-bar-fill {
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .stat-bar-fill.hp { background: linear-gradient(90deg, #ff6b6b, #ff8888); }
+        .stat-bar-fill.mp { background: linear-gradient(90deg, #4dabf7, #74c0fc); }
+        .stat-bar-fill.xp { background: linear-gradient(90deg, #ffd43b, #ffe066); }
+
+        .stat-value {
+            font-size: 8px;
+            color: #fff;
+            min-width: 50px;
+            text-align: right;
+        }
+
+        /* Equipment section */
+        .char-equipment {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .equip-label {
+            font-size: 8px;
+            color: #888;
+        }
+
+        .equip-slot {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #1a1a2e;
+            padding: 4px 8px;
+            border: 2px solid #3a3a5a;
+            border-radius: 4px;
+        }
+
+        .equip-icon {
+            font-size: 12px;
+        }
+
+        .equip-name {
+            font-size: 8px;
+            color: #fff;
+        }
+
+        .equip-stat {
+            font-size: 8px;
+            color: #4dabf7;
+            margin-left: auto;
+        }
+
+        /* Inventory grid */
+        .inventory-section {
+            margin-top: auto;
+        }
+
+        .inventory-label {
+            font-size: 10px;
+            color: #ffd700;
+            margin-bottom: 8px;
+        }
+
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 4px;
+        }
+
+        .inv-slot {
+            aspect-ratio: 1;
+            background: #1a1a2e;
+            border: 2px solid #3a3a5a;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.1s;
+        }
+
+        .inv-slot:hover {
+            border-color: #ffd700;
+            background: #2a2a4a;
+        }
+
+        .inv-slot.selected {
+            border-color: #ffd700;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        }
+
+        .inv-slot .count {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            font-size: 8px;
+            color: #fff;
+            text-shadow: 1px 1px 0 #000;
+        }
+
+        .inv-slot.empty {
+            opacity: 0.5;
+        }
+
+        /* Item tooltip */
+        .item-tooltip {
+            position: absolute;
+            bottom: 100px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #ffd700;
+            border-radius: 4px;
+            padding: 12px;
+            min-width: 180px;
+            z-index: 100;
+        }
+
+        .tooltip-name {
+            font-size: 10px;
+            color: #ffd700;
+            margin-bottom: 6px;
+        }
+
+        .tooltip-type {
+            font-size: 8px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .tooltip-stats {
+            font-size: 8px;
+            color: #4dabf7;
+            margin-bottom: 8px;
+        }
+
+        .tooltip-desc {
+            font-size: 8px;
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Controls hint */
+        .controls-hint {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 8px;
+            border: 2px solid #4a4a6a;
+            font-size: 8px;
+            color: #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-screen">
+            <!-- Header -->
+            <div class="menu-header">
+                <div class="header-title">PARTY STATUS</div>
+                <div class="header-info">
+                    <div class="gold-display">
+                        <span>💰</span>
+                        <span>1,247</span>
+                    </div>
+                    <div class="time-display">⏱️ 02:34:18</div>
+                </div>
+            </div>
+
+            <!-- Side menu -->
+            <div class="side-menu">
+                <div class="menu-item selected">
+                    <span class="menu-icon">👤</span>
+                    <span>STATUS</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-icon">🎒</span>
+                    <span>ITEMS</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-icon">⚔️</span>
+                    <span>EQUIP</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-icon">✨</span>
+                    <span>MAGIC</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-icon">📜</span>
+                    <span>QUESTS</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-icon">⚙️</span>
+                    <span>CONFIG</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-icon">💾</span>
+                    <span>SAVE</span>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="main-content">
+                <!-- Player 1 Card -->
+                <div class="character-card player1">
+                    <div class="char-portrait">
+                        <div class="portrait-sprite">
+                            <div class="portrait-head">
+                                <div class="portrait-hair brown"></div>
+                                <div class="portrait-eyes">
+                                    <div class="portrait-eye"></div>
+                                    <div class="portrait-eye"></div>
+                                </div>
+                            </div>
+                            <div class="portrait-body knight"></div>
+                        </div>
+                        <div class="level-badge">LV 5</div>
+                    </div>
+
+                    <div class="char-info">
+                        <div class="char-name">HERO</div>
+                        <div class="char-class">KNIGHT · PLAYER 1</div>
+                        <div class="char-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">❤️</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar-fill hp" style="width: 80%;"></div>
+                                </div>
+                                <span class="stat-value">32/40</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">✨</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar-fill mp" style="width: 60%;"></div>
+                                </div>
+                                <span class="stat-value">12/20</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">⭐</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar-fill xp" style="width: 45%;"></div>
+                                </div>
+                                <span class="stat-value">225/500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="char-equipment">
+                        <div class="equip-label">EQUIPMENT</div>
+                        <div class="equip-slot">
+                            <span class="equip-icon">⚔️</span>
+                            <span class="equip-name">Iron Sword</span>
+                            <span class="equip-stat">+5 ATK</span>
+                        </div>
+                        <div class="equip-slot">
+                            <span class="equip-icon">🛡️</span>
+                            <span class="equip-name">Chain Mail</span>
+                            <span class="equip-stat">+6 DEF</span>
+                        </div>
+                        <div class="equip-slot">
+                            <span class="equip-icon">💍</span>
+                            <span class="equip-name">Speed Ring</span>
+                            <span class="equip-stat">+2 SPD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player 2 Card -->
+                <div class="character-card player2">
+                    <div class="char-portrait">
+                        <div class="portrait-sprite">
+                            <div class="portrait-head">
+                                <div class="portrait-hair blonde"></div>
+                                <div class="portrait-eyes">
+                                    <div class="portrait-eye"></div>
+                                    <div class="portrait-eye"></div>
+                                </div>
+                            </div>
+                            <div class="portrait-body mage"></div>
+                        </div>
+                        <div class="level-badge">LV 4</div>
+                    </div>
+
+                    <div class="char-info">
+                        <div class="char-name">SAGE</div>
+                        <div class="char-class">MAGE · PLAYER 2</div>
+                        <div class="char-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">❤️</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar-fill hp" style="width: 100%;"></div>
+                                </div>
+                                <span class="stat-value">25/25</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">✨</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar-fill mp" style="width: 80%;"></div>
+                                </div>
+                                <span class="stat-value">32/40</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">⭐</span>
+                                <div class="stat-bar-container">
+                                    <div class="stat-bar-fill xp" style="width: 70%;"></div>
+                                </div>
+                                <span class="stat-value">280/400</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="char-equipment">
+                        <div class="equip-label">EQUIPMENT</div>
+                        <div class="equip-slot">
+                            <span class="equip-icon">🪄</span>
+                            <span class="equip-name">Oak Staff</span>
+                            <span class="equip-stat">+3 MAG</span>
+                        </div>
+                        <div class="equip-slot">
+                            <span class="equip-icon">👘</span>
+                            <span class="equip-name">Cloth Robe</span>
+                            <span class="equip-stat">+2 DEF</span>
+                        </div>
+                        <div class="equip-slot">
+                            <span class="equip-icon">📿</span>
+                            <span class="equip-name">Magic Amulet</span>
+                            <span class="equip-stat">+5 MP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory section -->
+                <div class="inventory-section">
+                    <div class="inventory-label">INVENTORY</div>
+                    <div class="inventory-grid">
+                        <div class="inv-slot selected">🧪<span class="count">5</span></div>
+                        <div class="inv-slot">🍖<span class="count">3</span></div>
+                        <div class="inv-slot">🔮</div>
+                        <div class="inv-slot">🗝️</div>
+                        <div class="inv-slot">📜</div>
+                        <div class="inv-slot">💎</div>
+                        <div class="inv-slot">🍄<span class="count">2</span></div>
+                        <div class="inv-slot">🪶</div>
+                        <div class="inv-slot">⚗️</div>
+                        <div class="inv-slot">🎭</div>
+                        <div class="inv-slot empty"></div>
+                        <div class="inv-slot empty"></div>
+                        <div class="inv-slot empty"></div>
+                        <div class="inv-slot empty"></div>
+                        <div class="inv-slot empty"></div>
+                        <div class="inv-slot empty"></div>
+                    </div>
+                </div>
+
+                <!-- Item tooltip -->
+                <div class="item-tooltip">
+                    <div class="tooltip-name">HEALING POTION</div>
+                    <div class="tooltip-type">Consumable</div>
+                    <div class="tooltip-stats">Restores 20 ❤️</div>
+                    <div class="tooltip-desc">
+                        A fizzy red drink that<br>
+                        heals your boo-boos!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-hint">
+            ← ↑ ↓ → NAVIGATE &nbsp;&nbsp; A = SELECT &nbsp;&nbsp; B = BACK &nbsp;&nbsp; START = CLOSE MENU
+        </div>
+    </div>
+
+    <script>
+        // Simple menu interaction
+        const menuItems = document.querySelectorAll('.menu-item');
+        const invSlots = document.querySelectorAll('.inv-slot:not(.empty)');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuItems.forEach(i => i.classList.remove('selected'));
+                item.classList.add('selected');
+            });
+        });
+
+        invSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                invSlots.forEach(s => s.classList.remove('selected'));
+                slot.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>

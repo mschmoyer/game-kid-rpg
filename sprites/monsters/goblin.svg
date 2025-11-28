@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Pixel art Grumpy Goblin - 128x128 -->
+
+  <!-- Define color palette -->
+  <defs>
+    <style>
+      .goblin-dark-green { fill: #2d5016; }
+      .goblin-green { fill: #4a7c2c; }
+      .goblin-light-green { fill: #6aa84f; }
+      .goblin-dark-brown { fill: #4a3520; }
+      .goblin-brown { fill: #6b4423; }
+      .goblin-tan { fill: #8b6f47; }
+      .goblin-eye-white { fill: #e8e8e8; }
+      .goblin-eye-red { fill: #8b0000; }
+      .goblin-tooth { fill: #f0e6d2; }
+      .goblin-black { fill: #1a1a1a; }
+      .goblin-metal { fill: #6b6b6b; }
+    </style>
+  </defs>
+
+  <!-- Left Ear -->
+  <rect x="24" y="40" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="24" y="48" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="32" y="32" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="32" y="40" width="8" height="8" class="goblin-green"/>
+  <rect x="32" y="48" width="8" height="8" class="goblin-green"/>
+  <rect x="32" y="56" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="40" y="24" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="40" y="32" width="8" height="8" class="goblin-light-green"/>
+  <rect x="40" y="40" width="8" height="8" class="goblin-light-green"/>
+  <rect x="40" y="48" width="8" height="8" class="goblin-green"/>
+  <rect x="40" y="56" width="8" height="8" class="goblin-dark-green"/>
+
+  <!-- Right Ear -->
+  <rect x="96" y="40" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="96" y="48" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="88" y="32" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="88" y="40" width="8" height="8" class="goblin-green"/>
+  <rect x="88" y="48" width="8" height="8" class="goblin-green"/>
+  <rect x="88" y="56" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="80" y="24" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="80" y="32" width="8" height="8" class="goblin-light-green"/>
+  <rect x="80" y="40" width="8" height="8" class="goblin-light-green"/>
+  <rect x="80" y="48" width="8" height="8" class="goblin-green"/>
+  <rect x="80" y="56" width="8" height="8" class="goblin-dark-green"/>
+
+  <!-- Head Outline -->
+  <rect x="48" y="32" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="48" y="40" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="48" y="48" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="48" y="56" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="48" y="64" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="56" y="24" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="64" y="24" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="72" y="32" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="72" y="40" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="72" y="48" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="72" y="56" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="72" y="64" width="8" height="8" class="goblin-dark-green"/>
+
+  <!-- Head Fill -->
+  <rect x="56" y="32" width="8" height="8" class="goblin-green"/>
+  <rect x="56" y="40" width="8" height="8" class="goblin-light-green"/>
+  <rect x="56" y="48" width="8" height="8" class="goblin-green"/>
+  <rect x="56" y="56" width="8" height="8" class="goblin-green"/>
+  <rect x="64" y="32" width="8" height="8" class="goblin-light-green"/>
+  <rect x="64" y="40" width="8" height="8" class="goblin-light-green"/>
+  <rect x="64" y="48" width="8" height="8" class="goblin-light-green"/>
+  <rect x="64" y="56" width="8" height="8" class="goblin-green"/>
+
+  <!-- Eyes - Angry/Beady -->
+  <rect x="56" y="40" width="8" height="8" class="goblin-eye-white"/>
+  <rect x="56" y="48" width="8" height="8" class="goblin-eye-white"/>
+  <rect x="56" y="48" width="4" height="4" class="goblin-eye-red"/>
+
+  <rect x="64" y="40" width="8" height="8" class="goblin-eye-white"/>
+  <rect x="64" y="48" width="8" height="8" class="goblin-eye-white"/>
+  <rect x="68" y="48" width="4" height="4" class="goblin-eye-red"/>
+
+  <!-- Angry Brow -->
+  <rect x="56" y="40" width="4" height="4" class="goblin-dark-green"/>
+  <rect x="68" y="40" width="4" height="4" class="goblin-dark-green"/>
+
+  <!-- Nose -->
+  <rect x="64" y="56" width="8" height="8" class="goblin-dark-green"/>
+
+  <!-- Mouth/Teeth (grumpy frown) -->
+  <rect x="56" y="64" width="8" height="8" class="goblin-black"/>
+  <rect x="64" y="64" width="8" height="8" class="goblin-black"/>
+  <rect x="56" y="64" width="4" height="4" class="goblin-tooth"/>
+  <rect x="68" y="64" width="4" height="4" class="goblin-tooth"/>
+
+  <!-- Neck -->
+  <rect x="56" y="72" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="64" y="72" width="8" height="8" class="goblin-dark-green"/>
+
+  <!-- Body (loincloth/vest) -->
+  <rect x="48" y="80" width="8" height="8" class="goblin-dark-brown"/>
+  <rect x="56" y="80" width="8" height="8" class="goblin-brown"/>
+  <rect x="64" y="80" width="8" height="8" class="goblin-brown"/>
+  <rect x="72" y="80" width="8" height="8" class="goblin-dark-brown"/>
+
+  <rect x="48" y="88" width="8" height="8" class="goblin-tan"/>
+  <rect x="56" y="88" width="8" height="8" class="goblin-dark-brown"/>
+  <rect x="64" y="88" width="8" height="8" class="goblin-dark-brown"/>
+  <rect x="72" y="88" width="8" height="8" class="goblin-tan"/>
+
+  <rect x="48" y="96" width="8" height="8" class="goblin-tan"/>
+  <rect x="56" y="96" width="8" height="8" class="goblin-tan"/>
+  <rect x="64" y="96" width="8" height="8" class="goblin-tan"/>
+  <rect x="72" y="96" width="8" height="8" class="goblin-tan"/>
+
+  <!-- Arms -->
+  <rect x="40" y="80" width="8" height="8" class="goblin-green"/>
+  <rect x="40" y="88" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="80" y="80" width="8" height="8" class="goblin-green"/>
+  <rect x="80" y="88" width="8" height="8" class="goblin-dark-green"/>
+
+  <!-- Left Hand -->
+  <rect x="32" y="88" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="32" y="96" width="8" height="8" class="goblin-green"/>
+
+  <!-- Club in right hand -->
+  <rect x="88" y="88" width="8" height="8" class="goblin-dark-brown"/>
+  <rect x="88" y="80" width="8" height="8" class="goblin-dark-brown"/>
+  <rect x="88" y="72" width="8" height="8" class="goblin-dark-brown"/>
+  <rect x="88" y="64" width="8" height="8" class="goblin-brown"/>
+  <rect x="96" y="64" width="8" height="8" class="goblin-brown"/>
+  <rect x="96" y="72" width="8" height="8" class="goblin-tan"/>
+  <rect x="88" y="72" width="4" height="4" class="goblin-metal"/>
+
+  <!-- Legs -->
+  <rect x="48" y="104" width="8" height="8" class="goblin-green"/>
+  <rect x="56" y="104" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="64" y="104" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="72" y="104" width="8" height="8" class="goblin-green"/>
+
+  <!-- Feet -->
+  <rect x="40" y="112" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="48" y="112" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="72" y="112" width="8" height="8" class="goblin-dark-green"/>
+  <rect x="80" y="112" width="8" height="8" class="goblin-dark-green"/>
+</svg>

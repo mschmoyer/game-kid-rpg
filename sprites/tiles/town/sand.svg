@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- Base sand color -->
+  <rect width="32" height="32" fill="#d4a855"/>
+
+  <!-- Lighter sand patches -->
+  <rect x="4" y="8" width="4" height="4" fill="#e0b866"/>
+  <rect x="20" y="4" width="4" height="4" fill="#e0b866"/>
+  <rect x="12" y="20" width="4" height="4" fill="#e0b866"/>
+  <rect x="0" y="28" width="4" height="4" fill="#e0b866"/>
+  <rect x="28" y="12" width="4" height="4" fill="#e0b866"/>
+  <rect x="8" y="0" width="4" height="4" fill="#e0b866"/>
+
+  <!-- Darker sand patches for depth -->
+  <rect x="0" y="4" width="4" height="4" fill="#c49844"/>
+  <rect x="16" y="16" width="4" height="4" fill="#c49844"/>
+  <rect x="24" y="24" width="4" height="4" fill="#c49844"/>
+  <rect x="8" y="12" width="4" height="4" fill="#c49844"/>
+  <rect x="28" y="0" width="4" height="4" fill="#c49844"/>
+
+  <!-- Small pebble/grain details -->
+  <rect x="6" y="6" width="2" height="2" fill="#b08838"/>
+  <rect x="22" y="10" width="2" height="2" fill="#b08838"/>
+  <rect x="14" y="26" width="2" height="2" fill="#b08838"/>
+  <rect x="2" y="22" width="2" height="2" fill="#b08838"/>
+  <rect x="26" y="20" width="2" height="2" fill="#b08838"/>
+
+  <!-- Light grain highlights -->
+  <rect x="10" y="2" width="2" height="2" fill="#ecc977"/>
+  <rect x="18" y="14" width="2" height="2" fill="#ecc977"/>
+  <rect x="4" y="24" width="2" height="2" fill="#ecc977"/>
+</svg>

@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .bat-dark { fill: #2d1b3d; }
+      .bat-med { fill: #4a2d5c; }
+      .bat-purple { fill: #6b3d7a; }
+      .bat-light { fill: #8a5a9e; }
+      .bat-accent { fill: #a67db8; }
+      .eye-glow { fill: #ff3333; }
+      .eye-highlight { fill: #ffff66; }
+      .fang { fill: #e8e8e8; }
+    </style>
+  </defs>
+
+  <!-- Left Wing -->
+  <!-- Outer wing section -->
+  <rect class="bat-dark" x="8" y="48" width="8" height="8"/>
+  <rect class="bat-dark" x="16" y="40" width="8" height="8"/>
+  <rect class="bat-med" x="16" y="48" width="8" height="8"/>
+  <rect class="bat-dark" x="24" y="32" width="8" height="8"/>
+  <rect class="bat-med" x="24" y="40" width="8" height="8"/>
+  <rect class="bat-purple" x="24" y="48" width="8" height="8"/>
+  <rect class="bat-med" x="32" y="32" width="8" height="8"/>
+  <rect class="bat-purple" x="32" y="40" width="8" height="8"/>
+  <rect class="bat-light" x="32" y="48" width="8" height="8"/>
+  <rect class="bat-purple" x="40" y="40" width="8" height="8"/>
+  <rect class="bat-accent" x="40" y="48" width="8" height="8"/>
+
+  <!-- Wing membrane detail -->
+  <rect class="bat-dark" x="8" y="56" width="8" height="8"/>
+  <rect class="bat-med" x="16" y="56" width="8" height="8"/>
+  <rect class="bat-purple" x="24" y="56" width="8" height="8"/>
+  <rect class="bat-light" x="32" y="56" width="8" height="8"/>
+  <rect class="bat-accent" x="40" y="56" width="8" height="8"/>
+
+  <rect class="bat-med" x="16" y="64" width="8" height="8"/>
+  <rect class="bat-purple" x="24" y="64" width="8" height="8"/>
+  <rect class="bat-light" x="32" y="64" width="8" height="8"/>
+  <rect class="bat-accent" x="40" y="64" width="8" height="8"/>
+
+  <rect class="bat-purple" x="24" y="72" width="8" height="8"/>
+  <rect class="bat-light" x="32" y="72" width="8" height="8"/>
+  <rect class="bat-accent" x="40" y="72" width="8" height="8"/>
+
+  <rect class="bat-light" x="32" y="80" width="8" height="8"/>
+  <rect class="bat-accent" x="40" y="80" width="8" height="8"/>
+
+  <!-- Body -->
+  <!-- Head -->
+  <rect class="bat-purple" x="48" y="32" width="8" height="8"/>
+  <rect class="bat-purple" x="56" y="24" width="8" height="8"/>
+  <rect class="bat-purple" x="64" y="24" width="8" height="8"/>
+  <rect class="bat-purple" x="72" y="32" width="8" height="8"/>
+
+  <!-- Ears -->
+  <rect class="bat-med" x="48" y="24" width="8" height="8"/>
+  <rect class="bat-dark" x="48" y="16" width="8" height="8"/>
+  <rect class="bat-med" x="72" y="24" width="8" height="8"/>
+  <rect class="bat-dark" x="72" y="16" width="8" height="8"/>
+
+  <!-- Face -->
+  <rect class="bat-light" x="48" y="40" width="8" height="8"/>
+  <rect class="bat-light" x="56" y="32" width="8" height="8"/>
+  <rect class="bat-accent" x="56" y="40" width="8" height="8"/>
+  <rect class="bat-accent" x="64" y="32" width="8" height="8"/>
+  <rect class="bat-light" x="64" y="40" width="8" height="8"/>
+  <rect class="bat-light" x="72" y="40" width="8" height="8"/>
+
+  <!-- Eyes with glow -->
+  <rect class="eye-glow" x="48" y="32" width="8" height="8"/>
+  <rect class="eye-highlight" x="48" y="32" width="4" height="4"/>
+  <rect class="eye-glow" x="72" y="32" width="8" height="8"/>
+  <rect class="eye-highlight" x="72" y="32" width="4" height="4"/>
+
+  <!-- Snout/Mouth -->
+  <rect class="bat-med" x="56" y="48" width="8" height="8"/>
+  <rect class="bat-med" x="64" y="48" width="8" height="8"/>
+  <rect class="bat-dark" x="56" y="56" width="8" height="8"/>
+  <rect class="bat-dark" x="64" y="56" width="8" height="8"/>
+
+  <!-- Fangs -->
+  <rect class="fang" x="56" y="64" width="4" height="8"/>
+  <rect class="fang" x="68" y="64" width="4" height="8"/>
+
+  <!-- Body/Torso -->
+  <rect class="bat-purple" x="48" y="48" width="8" height="8"/>
+  <rect class="bat-purple" x="72" y="48" width="8" height="8"/>
+  <rect class="bat-med" x="48" y="56" width="8" height="8"/>
+  <rect class="bat-light" x="56" y="72" width="8" height="8"/>
+  <rect class="bat-light" x="64" y="72" width="8" height="8"/>
+  <rect class="bat-med" x="72" y="56" width="8" height="8"/>
+  <rect class="bat-purple" x="48" y="64" width="8" height="8"/>
+  <rect class="bat-accent" x="56" y="80" width="8" height="8"/>
+  <rect class="bat-accent" x="64" y="80" width="8" height="8"/>
+  <rect class="bat-purple" x="72" y="64" width="8" height="8"/>
+  <rect class="bat-med" x="56" y="88" width="8" height="8"/>
+  <rect class="bat-med" x="64" y="88" width="8" height="8"/>
+
+  <!-- Right Wing -->
+  <!-- Outer wing section (mirrored) -->
+  <rect class="bat-dark" x="112" y="48" width="8" height="8"/>
+  <rect class="bat-dark" x="104" y="40" width="8" height="8"/>
+  <rect class="bat-med" x="104" y="48" width="8" height="8"/>
+  <rect class="bat-dark" x="96" y="32" width="8" height="8"/>
+  <rect class="bat-med" x="96" y="40" width="8" height="8"/>
+  <rect class="bat-purple" x="96" y="48" width="8" height="8"/>
+  <rect class="bat-med" x="88" y="32" width="8" height="8"/>
+  <rect class="bat-purple" x="88" y="40" width="8" height="8"/>
+  <rect class="bat-light" x="88" y="48" width="8" height="8"/>
+  <rect class="bat-purple" x="80" y="40" width="8" height="8"/>
+  <rect class="bat-accent" x="80" y="48" width="8" height="8"/>
+
+  <!-- Wing membrane detail (mirrored) -->
+  <rect class="bat-dark" x="112" y="56" width="8" height="8"/>
+  <rect class="bat-med" x="104" y="56" width="8" height="8"/>
+  <rect class="bat-purple" x="96" y="56" width="8" height="8"/>
+  <rect class="bat-light" x="88" y="56" width="8" height="8"/>
+  <rect class="bat-accent" x="80" y="56" width="8" height="8"/>
+
+  <rect class="bat-med" x="104" y="64" width="8" height="8"/>
+  <rect class="bat-purple" x="96" y="64" width="8" height="8"/>
+  <rect class="bat-light" x="88" y="64" width="8" height="8"/>
+  <rect class="bat-accent" x="80" y="64" width="8" height="8"/>
+
+  <rect class="bat-purple" x="96" y="72" width="8" height="8"/>
+  <rect class="bat-light" x="88" y="72" width="8" height="8"/>
+  <rect class="bat-accent" x="80" y="72" width="8" height="8"/>
+
+  <rect class="bat-light" x="88" y="80" width="8" height="8"/>
+  <rect class="bat-accent" x="80" y="80" width="8" height="8"/>
+</svg>

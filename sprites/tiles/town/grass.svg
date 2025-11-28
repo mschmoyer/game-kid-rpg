@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- Base grass color -->
+  <rect width="32" height="32" fill="#3d8c40"/>
+
+  <!-- Lighter grass patches (4x4 pixel blocks) -->
+  <rect x="4" y="4" width="4" height="4" fill="#4ca850"/>
+  <rect x="16" y="8" width="4" height="4" fill="#4ca850"/>
+  <rect x="8" y="20" width="4" height="4" fill="#4ca850"/>
+  <rect x="24" y="16" width="4" height="4" fill="#4ca850"/>
+  <rect x="0" y="12" width="4" height="4" fill="#4ca850"/>
+  <rect x="20" y="28" width="4" height="4" fill="#4ca850"/>
+
+  <!-- Darker grass patches for depth -->
+  <rect x="12" y="0" width="4" height="4" fill="#2d7030"/>
+  <rect x="0" y="24" width="4" height="4" fill="#2d7030"/>
+  <rect x="28" y="4" width="4" height="4" fill="#2d7030"/>
+  <rect x="24" y="24" width="4" height="4" fill="#2d7030"/>
+  <rect x="8" y="12" width="4" height="4" fill="#2d7030"/>
+
+  <!-- Small grass blade highlights -->
+  <rect x="6" y="2" width="2" height="2" fill="#5cb860"/>
+  <rect x="18" y="10" width="2" height="2" fill="#5cb860"/>
+  <rect x="26" y="18" width="2" height="2" fill="#5cb860"/>
+  <rect x="10" y="26" width="2" height="2" fill="#5cb860"/>
+  <rect x="2" y="18" width="2" height="2" fill="#5cb860"/>
+</svg>
