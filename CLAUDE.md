@@ -49,11 +49,106 @@ npx prisma db push
 
 ### Sprites
 - `sprites/` - Source SVG files (organized by type)
-- `sprites/png/` - Converted PNG files
+- `sprites/png/` - Converted PNG files (including PixelLab AI-generated)
 - `sprites/sheets/` - Generated sprite sheets
 - `public/` - Final assets used by the game
 
 See `sprites/CLAUDE.md` for sprite creation workflow.
+
+## PixelLab AI Sprite Generation
+
+We use **PixelLab** (https://api.pixellab.ai/mcp/docs) to generate pixel art sprites via MCP tools.
+
+### Available MCP Tools
+
+| Tool | Purpose |
+|------|---------|
+| `mcp__pixellab__create_character` | Create character with 4 or 8 directional views |
+| `mcp__pixellab__animate_character` | Add walking/attack animations to a character |
+| `mcp__pixellab__get_character` | Check status and download completed sprites |
+| `mcp__pixellab__list_characters` | List all created characters |
+
+### Generating a New Hero
+
+```javascript
+// 1. Create character with 8 directions
+mcp__pixellab__create_character({
+  description: "fantasy warrior with purple tunic, brown boots, sword on back",
+  name: "hero3",
+  size: 48,  // Canvas size (character ~60% of this)
+  n_directions: 8,
+  view: "low top-down",
+  detail: "medium detail",
+  shading: "basic shading",
+  outline: "single color black outline"
+})
+
+// 2. Wait 2-3 minutes, then check status
+mcp__pixellab__get_character({ character_id: "..." })
+
+// 3. Add walking animation
+mcp__pixellab__animate_character({
+  character_id: "...",
+  template_animation_id: "walking-4-frames"
+})
+```
+
+### Generating a New Monster
+
+```javascript
+mcp__pixellab__create_character({
+  description: "green slime monster, gelatinous, bouncy",
+  name: "slime3",
+  size: 48,
+  n_directions: 4,  // Monsters typically need fewer directions
+  view: "low top-down"
+})
+```
+
+### Processing Downloaded Sprites
+
+After downloading the ZIP from PixelLab:
+
+```bash
+# 1. Extract to temp directory
+unzip /path/to/character.zip -d /tmp/hero-extracted
+
+# 2. Copy rotations to sprites/png/heroes-pixellab/
+cp /tmp/hero-extracted/rotations/south.png sprites/png/heroes-pixellab/hero3.png
+cp /tmp/hero-extracted/rotations/west.png sprites/png/heroes-pixellab/hero3-left.png
+cp /tmp/hero-extracted/rotations/east.png sprites/png/heroes-pixellab/hero3-right.png
+cp /tmp/hero-extracted/rotations/north.png sprites/png/heroes-pixellab/hero3-up.png
+
+# 3. Copy animation frames for combat poses
+cp /tmp/hero-extracted/animations/walking-4-frames/east/frame_001.png \
+   sprites/png/heroes-pixellab/hero3-right-ready.png
+
+# 4. Regenerate sprite sheets
+node scripts/generate-spritesheets-v2.cjs
+
+# 5. Copy to public
+cp sprites/sheets/heroes2.* public/
+```
+
+### Sprite Atlas Organization
+
+We maintain **separate atlases** for PixelLab sprites:
+- `heroes.json/png` - Original hand-crafted sprites (knight-*)
+- `heroes2.json/png` - PixelLab AI sprites (hero2, hero3, etc.)
+- `monsters.json/png` - Original monster sprites
+- `monsters2.json/png` - PixelLab monster sprites (slime2, goblin2, etc.)
+
+### Dynamic Atlas Detection
+
+The game automatically selects the correct atlas based on sprite name:
+
+```javascript
+// In scene code - atlas is selected by naming convention
+const heroAtlas = this.playerSpriteBase.startsWith('hero2') ? 'heroes2' : 'heroes';
+const monsterAtlas = enemySprite.endsWith('2') ? 'monsters2' : 'monsters';
+```
+
+See `sprites/CLAUDE.md` for detailed sprite integration workflow.
 
 ## Common Development Tasks
 
