@@ -106,3 +106,52 @@ game-kid-rpg/
 - Actions cost 1 AP each (Attack, Magic, Item, Flee)
 - **Guard** uses all AP but doubles defense
 - **End Turn** saves remaining AP for next turn
+
+## Heroku Deployment
+
+The game is deployed on Heroku at: https://slime-kingdom-game-0602bbdf7ca5.herokuapp.com/
+
+### Prerequisites
+
+- Heroku CLI installed (`brew tap heroku/brew && brew install heroku`)
+- Heroku remote configured: `git remote add heroku https://git.heroku.com/slime-kingdom-game.git`
+- Heroku Postgres addon attached (DATABASE_URL set automatically)
+
+### Deploy
+
+```bash
+git push heroku main
+```
+
+### How It Works
+
+1. **Build**: The `heroku-postbuild` script runs:
+   - `npm run build` - Vite builds the frontend to `dist/`
+   - `npx prisma generate` - Generates Prisma client
+   - `npx prisma db push --accept-data-loss` - Syncs schema to Heroku Postgres
+
+2. **Run**: The `Procfile` starts the server:
+   - `web: npm start` runs `NODE_ENV=production node server/index.js`
+   - Server serves both static files (from `dist/`) and WebSocket connections
+
+### Useful Commands
+
+```bash
+# View logs
+heroku logs --tail
+
+# Open the app
+heroku open
+
+# Check database
+heroku pg:psql
+
+# Restart dynos
+heroku restart
+```
+
+### Environment Variables
+
+Heroku automatically sets:
+- `DATABASE_URL` - PostgreSQL connection string (from Heroku Postgres addon)
+- `PORT` - Dynamic port assigned by Heroku

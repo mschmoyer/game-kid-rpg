@@ -118,3 +118,55 @@ UPDATE characters SET
     strength = 1, defense = 0, gold = 0, experience = 0, level = 1
 WHERE name = 'playername';
 ```
+
+## Heroku Deployment
+
+**Live URL**: https://slime-kingdom-game-0602bbdf7ca5.herokuapp.com/
+
+### Deploy to Heroku
+
+```bash
+git push heroku main
+```
+
+### How Heroku builds and runs the app
+
+1. **Build phase** (`heroku-postbuild` script):
+   - `npm run build` - Vite builds frontend to `dist/`
+   - `npx prisma generate` - Generates Prisma client
+   - `npx prisma db push --accept-data-loss` - Syncs schema to Heroku Postgres
+
+2. **Run phase** (`Procfile`):
+   - `web: npm start` runs `NODE_ENV=production node server/index.js`
+   - Server serves static files from `dist/` and handles WebSocket connections
+
+### Environment Variables
+
+Heroku sets automatically:
+- `DATABASE_URL` - PostgreSQL connection string
+- `PORT` - Dynamic port (server binds to this)
+
+### Common Heroku Commands
+
+```bash
+# Deploy
+git push heroku main
+
+# View logs
+heroku logs --tail
+
+# Open app in browser
+heroku open
+
+# Connect to Postgres
+heroku pg:psql
+
+# Restart the app
+heroku restart
+```
+
+### Troubleshooting Heroku
+
+- **Database errors**: Check `heroku pg:psql` and verify schema
+- **WebSocket issues**: Heroku supports WebSockets on `wss://` automatically
+- **Build failures**: Check `heroku logs --tail` during deploy
