@@ -87,6 +87,9 @@ export default class LoginScene extends Phaser.Scene {
 
         // Listen for successful login
         NetworkManager.onGameState((state) => {
+            // Only act if LoginScene is still active (prevents infinite loop from reconnects)
+            if (!this.scene.isActive('LoginScene')) return;
+
             console.log('Login successful, starting game...');
             // Clean up DOM input before leaving scene
             this.destroyDOMInput();

@@ -35,6 +35,11 @@ class NetworkManager {
     }
 
     connect() {
+        // If already connected, don't reconnect (prevents infinite loops)
+        if (this.socket && this.socket.connected) {
+            return;
+        }
+
         // Clean up any existing socket first (important for HMR)
         if (this.socket) {
             console.log('Cleaning up existing socket before reconnect');
