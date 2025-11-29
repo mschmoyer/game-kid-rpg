@@ -15,9 +15,11 @@
     "heroku-postbuild": "npm run build && npx prisma generate && npx prisma db push --accept-data-loss",
     "db:docker": "docker run --name slime-kingdom-db -e POSTGRES_PASSWORD=password -e POSTGRES_DB=slime_kingdom -p 5432:5432 -d postgres:16",
     "db:init": "psql -h localhost -U postgres -d slime_kingdom -f db/init_db.sql",
-    "db:seed": "psql -h localhost -U postgres -d slime_kingdom -f db/init-db-data.sql",
+    "db:seed": "node scripts/seed-db.js",
+    "db:seed:heroku": "node scripts/seed-db.js --heroku",
     "db:migrate": "npx prisma migrate dev",
     "db:push": "npx prisma db push",
+    "db:push:heroku": "npx prisma db push && npm run db:seed:heroku",
     "db:studio": "npx prisma studio",
     "prisma:generate": "npx prisma generate"
   },

@@ -60,21 +60,29 @@ npx prisma db push
 | `equipment` | Equipped gear slots | schema.prisma |
 | `combat_log` | Battle history | schema.prisma |
 
-### Reloading Game Data
+### Database Commands
 
-To update enemy or item definitions:
 ```bash
-# Edit the data file
-vim db/init-db-data.sql
+# Local database
+npm run db:seed              # Seed local DB with game data
+npm run db:push              # Push Prisma schema changes
+npm run db:studio            # Open Prisma Studio (visual DB browser)
 
-# Reload into local PostgreSQL
-source .env && psql $DATABASE_URL -f db/init-db-data.sql
-
-# For Heroku - run commands individually via -c flag
-# (stdin piping doesn't work well with heroku pg:psql)
-heroku pg:psql -c "DELETE FROM enemy_definitions;"
-heroku pg:psql -c "INSERT INTO enemy_definitions (...) VALUES (...);"
+# Heroku database
+npm run db:seed:heroku       # Seed Heroku DB with game data
+npm run db:push:heroku       # Push schema + seed to Heroku
 ```
+
+### Updating Game Data (Enemies, Items, Spells)
+
+1. Edit the seed file: `db/init-db-data.sql`
+2. Run the seed script:
+   ```bash
+   npm run db:seed           # Local
+   npm run db:seed:heroku    # Heroku
+   ```
+
+The seed script (`scripts/seed-db.js`) auto-loads `.env`, parses the SQL file, and executes each statement with nice output.
 
 ### Sprites
 - `sprites/` - Source SVG files (organized by type)
